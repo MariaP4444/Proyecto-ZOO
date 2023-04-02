@@ -21,6 +21,7 @@ private:
 
 public:
     Habitat()= default;
+    Habitat(string nombre, int tempMax, int tempMin);
 
     int getTemMin();
     void setTemMin(int temMin);

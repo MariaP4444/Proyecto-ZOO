@@ -119,12 +119,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Zoologico.cpp",
+			"path" : "Zoo.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Zoologico.h",
+			"path" : "Zoo.h",
 			"sourceGroupIndex" : 1
 		},
 		{

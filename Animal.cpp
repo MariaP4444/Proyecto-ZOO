@@ -4,6 +4,7 @@
 
 #include "Animal.h"
 
+Animal::Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer): nombre(nombre), especie(especie), estadoDeSalud(estadoDeSalud), id(id), tempMaxA(tempMaxA), tempMinA(tempMinA), cantHorasDormidas(cantHorasDormidas), cantMaxDormir(cantMaxDormir), jugar(jugar), comer(comer){}
 string Animal::getNombre(){
     return this->nombre;
 }

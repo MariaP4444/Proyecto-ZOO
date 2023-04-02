@@ -2,11 +2,12 @@
 // Created by Lenovo on 31/03/2023.
 //
 
-#ifndef PROYECTO_ZOO_ZOOLOGICO_H
-#define PROYECTO_ZOO_ZOOLOGICO_H
+#ifndef PROYECTO_ZOO_ZOO_H
+#define PROYECTO_ZOO_ZOO_H
 
 #include <iostream>
 #include <string>
+#include <cctype>
 #include "Habitat.h"
 #include <vector>
 
@@ -16,19 +17,22 @@ using namespace std;
  * ATRIBUTOS
  * - Nombre: Nombre del zoologico
  * - cantAnimales: contador de animales dentro del zoologico, este sirve para asignarles un ID a los animales para poder identificarlos
- * - existenHabitat: booleano que nos ayudara a saber si por lo menos existe un habitat
+ * - zooVacio: booleano que nos ayudara a saber si por lo menos existe un habitat
 */
-class Zoologico {
+class Zoo {
 private:
     string nombre;
     int cantAnimales;
-    bool existenHabitat;
+    bool zooVacio;
+    vector<Habitat*> habitats;
 public:
-    Zoologico() = default;
+    Zoo() = default;
 
+    bool habitatRepetido(string nombre);
+    void registrarHabitat(string nombre, int tMin, int tMax);
 
-    bool getExistenHabitat();
-    void setExistenHabitat(bool existenHabitat);
+    bool getZooVacio();
+    void setZooVacio(bool zooVacio);
 
     int getCantAnimales();
     void setCantAnimales(int cantAnimales);
@@ -39,4 +43,4 @@ public:
 };
 
 
-#endif //PROYECTO_ZOO_ZOOLOGICO_H
+#endif //PROYECTO_ZOO_ZOO_H

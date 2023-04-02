@@ -4,6 +4,8 @@
 
 #include "Habitat.h"
 
+Habitat::Habitat(string nombre, int tempMax, int tempMin): nombre(nombre), tempMax(tempMax), tempMin(tempMin){}
+
 string Habitat::getNombre(){
     return this->nombre;
 }

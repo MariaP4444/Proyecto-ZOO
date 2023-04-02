@@ -25,6 +25,8 @@ private:
     bool comer;
     vector <string> jugetes;
 public:
+    Animal() = default;
+    Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer);
     vector<string> getJugetes();
     void agregarJugete(string juegueteNuevo);
 
