@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"
+			"value" : "c:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -643,7 +643,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -715,7 +715,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO"
+			"value" : "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1335,7 +1335,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"
+			"value" : "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"
 		},
 		{
 			"name" : "Proyecto_ZOO_IS_TOP_LEVEL",
@@ -1359,7 +1359,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO"
+			"value" : "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

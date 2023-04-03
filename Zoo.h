@@ -23,7 +23,7 @@ class Zoo {
 private:
     string nombre;
     int cantAnimales;
-    bool zooVacio;
+    bool zooNoVacio;
     vector<Habitat*> habitats;
 public:
     Zoo() = default;
@@ -31,8 +31,8 @@ public:
     bool habitatRepetido(string nombre);
     void registrarHabitat(string nombre, int tMin, int tMax);
 
-    bool getZooVacio();
-    void setZooVacio(bool zooVacio);
+    bool getZooNoVacio();
+    void setZooVacio(bool zooNoVacio);
 
     int getCantAnimales();
     void setCantAnimales(int cantAnimales);

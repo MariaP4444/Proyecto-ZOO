@@ -25,7 +25,33 @@ void primeraOpcion(Zoo* pZoo){
 
 }
 
-void mostrarMenu(Zoo* pZoo) {
+void mostrarMenu1(Zoo* pZoo){
+    int opc;
+    do{
+        cout << "\n** Zoo MAVA\n";
+        cout << "1. Agregar habitat\n";
+        cout << "0. Salir\n" << endl;
+
+        cin >> opc;
+        switch (opc)
+        {
+            case 1:
+                primeraOpcion(pZoo);
+                opc = -1;
+                break;
+            case 0:
+                cout << "ADIOS" << endl;
+                break;
+            case -1:
+                break;
+            default:
+                cout << "Error: la opcion seleccionada no existe " << endl;
+                break;
+        }
+    }while (opc != -1 && opc != 0);
+}
+
+void mostrarMenu2(Zoo* pZoo) {
     int id, opc, cantAnimales = 0;
 
     do
@@ -33,13 +59,11 @@ void mostrarMenu(Zoo* pZoo) {
         cout << "\n** Zoo MAVA\n";
         cout << "1. Agregar habitat\n";
         cout << "2. Lista de habitats y animales\n";
+        cout << "3. Agregar animal\n";
+        cout << "4. Modificar informacion de animal\n";
+        cout << "5. Visitar habitat \n";
+        cout << "0. Salir\n" << endl;
 
-        if(pZoo->getZooVacio() == false){
-            cout << "3. Agregar animal\n";
-            cout << "4. Modificar informacion de animal\n";
-            cout << "5. Visitar habitat \n";
-            cout << "0. Salir\n" << endl;
-        }
 
         cin >> opc;
 
@@ -55,7 +79,7 @@ void mostrarMenu(Zoo* pZoo) {
 
                 break;
             case 3:
-
+                cout << "1. Agregar habitat\n";
                 break;
             case 4:
 
@@ -65,7 +89,11 @@ void mostrarMenu(Zoo* pZoo) {
 
 
                 break;
+            case 0:
+                cout << "ADIOS" << endl;
+                break;
             default:
+                cout << "Error: la opcion seleccionada no existe " << endl;
                 break;
         }
     } while (opc != 0);
@@ -74,7 +102,14 @@ void mostrarMenu(Zoo* pZoo) {
 int main() {
 
     Zoo* pZoo = new Zoo();
-    mostrarMenu(pZoo);
+    if(pZoo->getZooNoVacio()){
+        mostrarMenu2(pZoo);
+
+    }
+    else{
+        mostrarMenu1(pZoo);
+        mostrarMenu2(pZoo);
+    }
     delete pZoo;
     return 0;
 

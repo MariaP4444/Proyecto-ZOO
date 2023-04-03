@@ -30,16 +30,16 @@ void Zoo::registrarHabitat(string nombre, int tMin, int tMax) {
     } else {
         Habitat *pHabitat = new Habitat(nombre, tMin, tMax);
         this->habitats.push_back(pHabitat);
-        this->setZooVacio(false);
+        setZooVacio( true);
 
     }
 }
-bool Zoo::getZooVacio() {
-    return this->zooVacio;
+bool Zoo::getZooNoVacio() {
+    return this->zooNoVacio;
 }
 
-void Zoo::setZooVacio(bool zooVacio){
-    Zoo::zooVacio = zooVacio;
+void Zoo::setZooVacio(bool zoonNoVacio){
+    Zoo::zooNoVacio = zoonNoVacio;
 }
 
 int Zoo::getCantAnimales() {
