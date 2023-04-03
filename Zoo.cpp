@@ -24,17 +24,16 @@ bool Zoo::habitatRepetido(string nombre){
     return false;
 }
 
-void Zoo::registrarHabitat(string nombre, int tMin, int tMax){
-    if(this->habitatRepetido(nombre)){
-    cout << "Este habitat ya existe " << endl;
+void Zoo::registrarHabitat(string nombre, int tMin, int tMax) {
+    if (this->habitatRepetido(nombre)) {
+        cout << "Este habitat ya existe " << endl;
+    } else {
+        Habitat *pHabitat = new Habitat(nombre, tMin, tMax);
+        this->habitats.push_back(pHabitat);
+        this->setZooVacio(false);
+
     }
-    else{
-    Habitat* pHabitat = new Habitat(nombre, tMin, tMax);
-    this->habitats.push_back(pHabitat);
-    this->setZooVacio(false);
-
 }
-
 bool Zoo::getZooVacio() {
     return this->zooVacio;
 }

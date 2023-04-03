@@ -51,7 +51,7 @@ public:
     int getId();
     void setId(int id);
 
-    const string getEstadoDeSalud();
+    string getEstadoDeSalud();
     void setEstadoDeSalud(string estadoDeSalud);
 
     string getEspecie();

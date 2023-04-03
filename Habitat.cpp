@@ -22,10 +22,10 @@ void Habitat::setTempMax(int tempMax) {
     Habitat::tempMax = tempMax;
 }
 
-int Habitat::getTemMin(){
-    return this->temMin;
+int Habitat::getTempMin(){
+    return this->tempMin;
 }
 
-void Habitat::setTemMin(int temMin) {
-    Habitat::temMin = temMin;
+void Habitat::setTempMin(int tempMin) {
+    Habitat::tempMin = tempMin;
 }

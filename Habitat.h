@@ -16,15 +16,15 @@ class Habitat {
 private:
     string nombre;
     int tempMax;
-    int temMin;
+    int tempMin;
     vector <Animal*> animalesEnHabitat;
 
 public:
     Habitat()= default;
     Habitat(string nombre, int tempMax, int tempMin);
 
-    int getTemMin();
-    void setTemMin(int temMin);
+    int getTempMin();
+    void setTempMin(int tempMin);
 
     string getNombre();
     void setNombre(string nombre);
