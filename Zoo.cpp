@@ -57,3 +57,26 @@ string Zoo::getNombre(){
 void Zoo::setNombre(string nombre) {
     Zoo::nombre = nombre;
 }
+
+bool Zoo::exieteHabitatTemp(int temMax, int temMin) {
+    vector<Habitat*>::iterator itVector;
+
+    for (itVector = this->habitats.begin(); itVector != this->habitats.end(); ++itVector){
+       if((*itVector)->getTempMax() <= temMax && (*itVector)->getTempMin() >= temMin){
+           return true;
+       }
+    }
+    return false;
+}
+
+vector<string> Zoo::listaHabitatsDisponibles(int temMax, int  temMin){
+    vector<Habitat*>::iterator itVector;
+    vector<string> habitatsAnimal;
+
+    for (itVector = this->habitats.begin(); itVector != this->habitats.end(); ++itVector){
+        if((*itVector)->getTempMax() <= temMax && (*itVector)->getTempMin() >= temMin){
+            habitatsAnimal.push_back((*itVector)->getNombre());
+        }
+    }
+    return habitatsAnimal;
+}

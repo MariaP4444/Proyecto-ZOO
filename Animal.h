@@ -17,6 +17,7 @@ private:
     string especie;
     string estadoDeSalud;
     int id;
+    int edad;
     int tempMaxA;
     int tempMinA;
     int cantHorasDormidas;
@@ -26,7 +27,7 @@ private:
     vector <string> jugetes;
 public:
     Animal() = default;
-    Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer);
+    Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad);
     vector<string> getJugetes();
     void agregarJugete(string juegueteNuevo);
 
@@ -47,6 +48,9 @@ public:
 
     int getTempMaxA();
     void setTempMaxA(int tempMaxA);
+
+    int getEdad();
+    void setEdad(int edad);
 
     int getId();
     void setId(int id);

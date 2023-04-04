@@ -4,7 +4,7 @@
 
 #include "Animal.h"
 
-Animal::Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer): nombre(nombre), especie(especie), estadoDeSalud(estadoDeSalud), id(id), tempMaxA(tempMaxA), tempMinA(tempMinA), cantHorasDormidas(cantHorasDormidas), cantMaxDormir(cantMaxDormir), jugar(jugar), comer(comer){}
+Animal::Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad): nombre(nombre), especie(especie), estadoDeSalud(estadoDeSalud), id(id), tempMaxA(tempMaxA), tempMinA(tempMinA), cantHorasDormidas(cantHorasDormidas), cantMaxDormir(cantMaxDormir), jugar(jugar), comer(comer), edad(edad){}
 string Animal::getNombre(){
     return this->nombre;
 }
@@ -91,6 +91,14 @@ vector<string> Animal::getJugetes(){
 
 void Animal::agregarJugete(string juegueteNuevo) {
     this->jugetes.push_back(juegueteNuevo);
+}
+
+int Animal::getEdad(){
+    return this->edad;
+}
+
+void Animal::setEdad(int edad) {
+    Animal::edad = edad;
 }
 
 

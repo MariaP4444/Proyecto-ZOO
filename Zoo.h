@@ -28,6 +28,7 @@ private:
 public:
     Zoo() = default;
 
+
     bool habitatRepetido(string nombre);
     void registrarHabitat(string nombre, int tMin, int tMax);
 
@@ -39,6 +40,9 @@ public:
 
     string getNombre();
     void setNombre(string nombre);
+
+    bool exieteHabitatTemp(int temMax, int  temMin);
+    vector<string> listaHabitatsDisponibles(int temMax, int  temMin);
 
 };
 
