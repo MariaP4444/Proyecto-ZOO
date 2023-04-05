@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Animal.cpp" "CMakeFiles/Proyecto_ZOO.dir/Animal.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/Animal.cpp.obj.d"
-  "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Habitat.cpp" "CMakeFiles/Proyecto_ZOO.dir/Habitat.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/Habitat.cpp.obj.d"
-  "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Zoo.cpp" "CMakeFiles/Proyecto_ZOO.dir/Zoo.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/Zoo.cpp.obj.d"
-  "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/main.cpp" "CMakeFiles/Proyecto_ZOO.dir/main.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/main.cpp.obj.d"
+  "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Animal.cpp" "CMakeFiles/Proyecto_ZOO.dir/Animal.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/Animal.cpp.obj.d"
+  "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Habitat.cpp" "CMakeFiles/Proyecto_ZOO.dir/Habitat.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/Habitat.cpp.obj.d"
+  "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Zoo.cpp" "CMakeFiles/Proyecto_ZOO.dir/Zoo.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/Zoo.cpp.obj.d"
+  "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/main.cpp" "CMakeFiles/Proyecto_ZOO.dir/main.cpp.obj" "gcc" "CMakeFiles/Proyecto_ZOO.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links.

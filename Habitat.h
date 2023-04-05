@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include "Animal.h"
-#include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ private:
     string nombre;
     int tempMax;
     int tempMin;
-    vector <Animal*> animalesEnHabitat;
+    unordered_map <int, Animal*> animales;
 
 public:
     Habitat()= default;
@@ -31,6 +31,12 @@ public:
 
     int getTempMax();
     void setTempMax(int tempMax);
+
+    Animal* devolverPunteroAn(int id);
+
+    void listarAnimales();
+
+    void infoCompletaAn();
 
 };
 

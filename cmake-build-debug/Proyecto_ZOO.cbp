@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"/>
+				<Option working_dir="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyecto_ZOO">
-				<Option output="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Proyecto_ZOO.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"/>
+				<Option output="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Proyecto_ZOO.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -34,15 +34,15 @@
 					<Add directory="/mingw/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_ZOO"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_ZOO"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyecto_ZOO/fast">
-				<Option output="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Proyecto_ZOO.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"/>
+				<Option output="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Proyecto_ZOO.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -57,55 +57,55 @@
 					<Add directory="/mingw/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_ZOO/fast"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_ZOO/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"/>
+				<Option working_dir="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug"/>
+				<Option working_dir="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Animal.cpp">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Animal.cpp">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Animal.h">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Animal.h">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Habitat.cpp">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Habitat.cpp">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Habitat.h">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Habitat.h">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Zoo.cpp">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Zoo.cpp">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/Zoo.h">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/Zoo.h">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/main.cpp">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/main.cpp">
 			<Option target="Proyecto_ZOO"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/CMakeLists.txt">
+		<Unit filename="C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

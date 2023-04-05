@@ -16,6 +16,7 @@ private:
     string nombre;
     string especie;
     string estadoDeSalud;
+    string alimentacion;
     int id;
     int edad;
     int tempMaxA;
@@ -25,6 +26,7 @@ private:
     bool jugar;
     bool comer;
     vector <string> jugetes;
+    vector <string> alimentos;
 public:
     Animal() = default;
     Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad);
@@ -63,6 +65,13 @@ public:
 
     string getNombre();
     void setNombre(string nombre);
+
+    string getAliemtacion();
+    void setAliemtacion(string aliemtacion);
+
+    void menuAnimal(string nombre);
+
+    void elegirAlim(int tipoAlim);
 
 
 };

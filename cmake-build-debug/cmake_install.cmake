@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO
+# Install script for directory: C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Lenovo/Desktop/Git/POO/Proyecto-ZOO/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/PC/Desktop/2023-1/POO/Proyecto-ZOO/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

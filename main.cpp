@@ -6,7 +6,39 @@
 #include "Habitat.h"
 #include "Zoo.h"
 
-using namespace std;
+using namespace std
+
+//CUARTA OPCION
+
+void cuartaOpcion(Zoo* pZoo){
+
+    //Primero: pedir info del habitat del animal
+
+    Habitat tHabitat;
+    Animal tAnimal;
+    string nombreHab;
+    int idAnimal;
+    cout << "Ingrese el habitat del animal " << endl;
+    cin >> nombreHab;
+
+    for(char& c : nombre){
+        c = std::tolower(c);
+    }
+
+    //busco el habita para listar los animales de ese habitat
+    tHabitat = pZoo->devolverPunteroVec(nombreHab);
+    tHabitat->listarAnimales();
+
+    //una vez listados, le pido al usuario que escriba el id deseado para obtener el puntero
+    cout << "Ingrese el id del animal " << endl;
+    cin >> idAnimal;
+    tAnimal = tHabitat->devolverPunteroAn(idAnimal);
+
+    tAnimal->menuAnimal();
+
+}
+
+//SEGUNDA OPCION
 
 bool opcionHabitatDis(string habitat, vector<string> habitatsDisponibles){
 
@@ -93,6 +125,7 @@ void primeraOpcion(Zoo* pZoo){
 
 }
 
+
 void mostrarMenu1(Zoo* pZoo){
     int opc;
     do{
@@ -155,7 +188,7 @@ void mostrarMenu2(Zoo* pZoo) {
                 cout << "1. Agregar habitat\n";
                 break;
             case 4:
-
+                cuartaOpcion(pZoo);
 
                 break;
             case 5:

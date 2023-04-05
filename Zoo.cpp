@@ -12,28 +12,6 @@ void Zoo::registrarHabitat(int id, string nombre, string sexo, string nacimiento
 
 */
 
-bool Zoo::habitatRepetido(string nombre){
-    vector<Habitat*>::iterator itVectorHa;
-
-    for (itVectorHa = this->habitats.begin(); itVectorHa != this->habitats.end(); ++itVectorHa){
-        Habitat* habitatTemp = *itVectorHa;
-        if(nombre == habitatTemp->getNombre()){
-            return true;
-        }
-    }
-    return false;
-}
-
-void Zoo::registrarHabitat(string nombre, int tMin, int tMax) {
-    if (this->habitatRepetido(nombre)) {
-        cout << "Este habitat ya existe " << endl;
-    } else {
-        Habitat *pHabitat = new Habitat(nombre, tMin, tMax);
-        this->habitats.push_back(pHabitat);
-        setZooVacio( true);
-
-    }
-}
 bool Zoo::getZooNoVacio() {
     return this->zooNoVacio;
 }
@@ -57,6 +35,56 @@ string Zoo::getNombre(){
 void Zoo::setNombre(string nombre) {
     Zoo::nombre = nombre;
 }
+
+
+bool Zoo::habitatRepetido(string nombre){
+    vector<Habitat*>::iterator itVectorHa;
+
+    for (itVectorHa = this->habitats.begin(); itVectorHa != this->habitats.end(); ++itVectorHa){
+        Habitat* habitatTemp = *itVectorHa;
+        if(nombre == habitatTemp->getNombre()){
+            return true;
+        }
+    }
+    return false;
+}
+
+void Zoo::registrarHabitat(string nombre, int tMin, int tMax) {
+    if (this->habitatRepetido(nombre)) {
+        cout << "Este habitat ya existe " << endl;
+    } else {
+        Habitat *pHabitat = new Habitat(nombre, tMin, tMax);
+        this->habitats.push_back(pHabitat);
+        setZooVacio( true);
+
+    }
+}
+
+Habitat* Zoo::devolverPunteroVec(string nombre){
+    vector<Habitat*>::iterator itVectorHa;
+
+    for (itVectorHa = this->habitats.begin(); itVectorHa != this->habitats.end(); ++itVectorHa){
+        Habitat* habitatTemp = *itVectorHa;
+        if(habitatTemp->getNombre() == nombre){
+            return habitatTemp;
+        }
+
+    }
+}
+
+void Zoo::listarHabitats(){
+    vector<Habitat*>::iterator itVectorHa;
+
+    for (itVectorHa = this->habitats.begin(); itVectorHa != this->habitats.end(); ++itVectorHa){
+        Habitat* habitatTemp = *itVectorHa;
+        cout << "Habitat: " << endl;
+        cout << habitatTemp->getNombre() << endl;
+        cout << "Temperatua maxima: " << habitatTemp->getTempMax();
+        cout << "Temperatua minima: " << habitatTemp->getTempMin();
+    }
+}
+
+
 
 bool Zoo::exieteHabitatTemp(int temMax, int temMin) {
     vector<Habitat*>::iterator itVector;
