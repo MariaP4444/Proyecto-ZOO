@@ -5,23 +5,38 @@
 
 #include "Habitat.h"
 #include "Zoo.h"
+#include "Animal.h"
 
-using namespace std
+using namespace std;
 
-//CUARTA OPCION
+string convertidorStringMinuscula(string palabra){
+    for(char& c : palabra){
+        c = std::tolower(c);
+    }
+    return palabra;
+}
+
+
+// QUINTA OPCION
+
+void quintaOpcion(Zoo* pZoo){
+
+
+}
+
 
 void cuartaOpcion(Zoo* pZoo){
 
     //Primero: pedir info del habitat del animal
 
-    Habitat tHabitat;
-    Animal tAnimal;
+    Habitat *tHabitat;
+    Animal *tAnimal;
     string nombreHab;
     int idAnimal;
     cout << "Ingrese el habitat del animal " << endl;
     cin >> nombreHab;
 
-    for(char& c : nombre){
+    for(char& c : nombreHab){
         c = std::tolower(c);
     }
 
@@ -52,10 +67,9 @@ bool opcionHabitatDis(string habitat, vector<string> habitatsDisponibles){
 }
 
 void segundaOpcion(Zoo* pZoo){
-    string nombre, especie, estadoDeSalud, habitat, edad;
-    int tempMaxA, tempMinA, cantMaxDormir;
+    string  habitat;
+    int tempMaxA, tempMinA;
     int contadorOp = 1;
-
 
     cout << "Ingrese la temperatura minima del animal " << endl;
     cin >> tempMaxA;
@@ -79,31 +93,14 @@ void segundaOpcion(Zoo* pZoo){
         cout << "Ingrese el nombre del habitat a cual desea ingresar al animal: " << endl;
         cin.ignore();
         getline(cin, habitat, '\n');
-        for(char& c : habitat){
-            c = std::tolower(c);
-        }
+        habitat = convertidorStringMinuscula(habitat);
     } while (!opcionHabitatDis(habitat,habitatsDisponibles));
 
-    cout << "Ingrese el nombre del animal: " << endl;
-    cin.ignore();
-    getline(cin, nombre, '\n');
-
-    cout << "Ingrese la especie del animal: " << endl;
-    cin.ignore();
-    getline(cin, especie, '\n');
-
-    cout << "Ingrese el estado de salud del  animal: " << endl;
-    cin.ignore();
-    getline(cin, estadoDeSalud, '\n');
-
-    cout << "Ingrese la edad del animal " << endl;
-    cin >> edad;
-
-    cout << "Ingrese las horas de sueño del animal " << endl;
-    cin >> cantMaxDormir;
 
 
 }
+
+// PRIMERA OPCION
 
 void primeraOpcion(Zoo* pZoo){
     string nombre;
@@ -124,7 +121,6 @@ void primeraOpcion(Zoo* pZoo){
     pZoo->registrarHabitat(nombre, tMin, tMax);
 
 }
-
 
 void mostrarMenu1(Zoo* pZoo){
     int opc;
@@ -181,18 +177,14 @@ void mostrarMenu2(Zoo* pZoo) {
                 catch (invalid_argument e){
                     cout << "Por favor crea un habitat para este animal y luego lo vuelves a intentar"<< endl;
                 }
-                //Zoo->mostrarInfo();
-
                 break;
             case 3:
-                cout << "1. Agregar habitat\n";
+                pZoo->listarHabitatsConAnimales();
                 break;
             case 4:
                 cuartaOpcion(pZoo);
-
                 break;
             case 5:
-
 
                 break;
             case 0:

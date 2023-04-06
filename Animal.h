@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -25,53 +26,71 @@ private:
     int cantMaxDormir;
     bool jugar;
     bool comer;
-    vector <string> jugetes;
-    vector <string> alimentos;
+    vector<string> juguetes;
+    unordered_map<string, int> alimentos;
+
 public:
     Animal() = default;
-    Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA, int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad);
-    vector<string> getJugetes();
-    void agregarJugete(string juegueteNuevo);
+
+    Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA,
+           int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad, vector<string> juguetes);
+
 
     bool getComer();
+
     void setComer(bool comer);
 
-    bool getJugar() ;
+    bool getJugar();
+
     void setJugar(bool jugar);
 
     int getCantMaxDormir();
+
     void setCantMaxDormir(int cantMaxDormir);
 
     int getCantHorasDormidas();
+
     void setCantHorasDormidas(int cantHorasDormidas);
 
     int getTempMinA();
+
     void setTempMinA(int tempMinA);
 
     int getTempMaxA();
+
     void setTempMaxA(int tempMaxA);
 
     int getEdad();
+
     void setEdad(int edad);
 
     int getId();
+
     void setId(int id);
 
     string getEstadoDeSalud();
+
     void setEstadoDeSalud(string estadoDeSalud);
 
     string getEspecie();
+
     void setEspecie(string especie);
 
     string getNombre();
+
     void setNombre(string nombre);
 
     string getAliemtacion();
+
     void setAliemtacion(string aliemtacion);
 
-    void menuAnimal(string nombre);
+    void menuAnimal();
 
-    void elegirAlim(int tipoAlim);
+    void elegirAlim(string tipoAlim);
+
+    unordered_map<string, int> getAlimentos();
+
+    void setAlimentos(unordered_map<string, int> alimentos);
 
 
 };

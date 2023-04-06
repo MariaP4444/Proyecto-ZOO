@@ -46,7 +46,9 @@ public:
 
     Habitat* devolverPunteroVec(string nombre);
 
-    void listarHabitats();
+    void listarHabitatsConAnimales();
+
+    void agregarAnimalaHabitat(Animal* Animal, string habitatAgregar);
 
 };
 

@@ -9,6 +9,7 @@
 #include <string>
 #include "Animal.h"
 #include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -37,6 +38,8 @@ public:
     void listarAnimales();
 
     void infoCompletaAn();
+
+    void agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA);
 
 };
 

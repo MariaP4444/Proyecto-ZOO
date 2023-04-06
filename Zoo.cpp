@@ -70,17 +70,18 @@ Habitat* Zoo::devolverPunteroVec(string nombre){
         }
 
     }
+    return nullptr;
 }
 
-void Zoo::listarHabitats(){
+void Zoo::listarHabitatsConAnimales(){
     vector<Habitat*>::iterator itVectorHa;
 
     for (itVectorHa = this->habitats.begin(); itVectorHa != this->habitats.end(); ++itVectorHa){
         Habitat* habitatTemp = *itVectorHa;
-        cout << "Habitat: " << endl;
-        cout << habitatTemp->getNombre() << endl;
+        cout << "Habitat: " << habitatTemp->getNombre() << endl;
         cout << "Temperatua maxima: " << habitatTemp->getTempMax();
         cout << "Temperatua minima: " << habitatTemp->getTempMin();
+        habitatTemp->infoCompletaAn();
     }
 }
 
@@ -108,3 +109,9 @@ vector<string> Zoo::listaHabitatsDisponibles(int temMax, int  temMin){
     }
     return habitatsAnimal;
 }
+
+void Zoo::agregarAnimalaHabitat(Animal *Animal, string habitatAgregar) {
+
+}
+
+
