@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ public:
     Animal() = default;
 
     Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA,
-           int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad, vector<string> juguetes);
+           int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad, vector<string> juguetes, string alimentacion);
 
 
     bool getComer();
@@ -92,6 +93,7 @@ public:
 
     void setAlimentos(unordered_map<string, int> alimentos);
 
+    bool eliminarJuguetes(string jugueteElimanar);
 
 };
 

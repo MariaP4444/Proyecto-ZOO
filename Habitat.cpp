@@ -56,10 +56,10 @@ void Habitat::listarAnimales(){
     cout << "Los animales de este habitat son:\n";
 
     for (itMapA = this->animales.begin(); itMapA != this->animales.end(); ++itMapA){
-        cout << "Nombre: " << itMapA->second->getNombre() << endl;
-        cout << "Especie: " << itMapA->second->getEspecie() << endl;
-        cout << "ID: " << itMapA->first << endl;
-        cout << "----------------" << endl;
+        cout << " -Nombre: " << itMapA->second->getNombre() << endl;
+        cout << " -Especie: " << itMapA->second->getEspecie() << endl;
+        cout << " -ID: " << itMapA->first << endl;
+        cout << "---------------------------------" << endl;
     }
 }
 
@@ -71,18 +71,18 @@ void Habitat::infoCompletaAn(){
     for (itMapA = this->animales.begin(); itMapA != this->animales.end(); ++itMapA){
         Animal* tAnimal = itMapA->second;
 
-        cout << "Nombre: " << tAnimal->getNombre() << endl;
-        cout << "Especie: " << tAnimal->getEspecie() << endl;
-        cout << "ID: " << itMapA->first << endl;
-        cout << "Estado de salud: " << tAnimal->getEstadoDeSalud() << endl;
-        cout << "Alimentacion: " << tAnimal->getAliemtacion() << endl;
-        cout << "Edad: " << tAnimal->getEdad() << endl;
-        cout << "Temperatura minima: " << tAnimal->getTempMinA() << endl;
-        cout << "Temperatura maxima: " << tAnimal->getTempMaxA() << endl;
-        cout << "Horas de suenio por dia: " << tAnimal->getCantMaxDormir() << endl;
-        cout << "Horas dormidas el dia de hoy: " << tAnimal->getCantHorasDormidas() << endl;
-        cout << "Ha jugado el dia de hoy: " << tAnimal->getJugar() << endl;
-        cout << "Ha comido el dia de hoy: " << tAnimal->getComer() << endl << endl;
+        cout << "  Nombre: " << tAnimal->getNombre() << endl;
+        cout << "  Especie: " << tAnimal->getEspecie() << endl;
+        cout << "  ID: " << itMapA->first << endl;
+        cout << "  Estado de salud: " << tAnimal->getEstadoDeSalud() << endl;
+        cout << "  Alimentacion: " << tAnimal->getAliemtacion() << endl;
+        cout << "  Edad: " << tAnimal->getEdad() << endl;
+        cout << "  Temperatura minima: " << tAnimal->getTempMinA() << endl;
+        cout << "  Temperatura maxima: " << tAnimal->getTempMaxA() << endl;
+        cout << "  Horas de suenio por dia: " << tAnimal->getCantMaxDormir() << endl;
+        cout << "  Horas dormidas el dia de hoy: " << tAnimal->getCantHorasDormidas() << endl;
+        cout << "  Ha jugado el dia de hoy: " << tAnimal->getJugar() << endl;
+        cout << "  Ha comido el dia de hoy: " << tAnimal->getComer() << endl << endl;
         cout << "--------------------------------------------------------" << endl;
     }
 }
@@ -108,37 +108,33 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
     int  cantMaxDormir, cantJuguetes, edad;
     vector<string> juguetesTemp;
 
-
     cout << "Ingrese el nombre del animal: " << endl;
-    cin.ignore();
     getline(cin, nombreTemp, '\n');
 
     cout << "Ingrese la especie del animal: " << endl;
-    cin.ignore();
     getline(cin, especie, '\n');
 
     cout << "Ingrese el estado de salud del  animal: " << endl;
-    cin.ignore();
     getline(cin, estadoDeSalud, '\n');
 
     do {
-        cout << "Ingrese la edad del animal " << endl;
+        cout << "Ingrese la edad del animal:" << endl;
         cin >> edad;
     }while(edad <= 0 || edad > 100);
 
     do {
-        cout << "Ingrese las horas de sueño del animal " << endl;
+        cout << "Ingrese las horas de sueño del animal: " << endl;
         cin >> cantMaxDormir;
     }while(cantMaxDormir <= 0);
 
 
     do {
-        cout << "Ingrese el numero de jugetes que va a tener el animal " << endl;
+        cout << "Ingrese el numero de jugetes que va a tener el animal: " << endl;
         cin >> cantJuguetes;
     }while(cantJuguetes <= 0);
 
     while(cantJuguetes > 0){
-        cout << "Ingrese ingrese el nombre del juguete " << endl;
+        cout << " - Ingrese ingrese el nombre del juguete: " << endl;
         cin.ignore();
         getline(cin, jugueteNom, '\n');
         jugueteNom= convertidorStringMinuscula2(jugueteNom);
@@ -151,7 +147,6 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
         cout << "\nTipo de dieta disponible:" << endl;
         cout << "\n - Carnivoro \n - Hervivoro \n - Omnivoro" << endl;
         cout << "Ingrese el tipo de alimentacion del  animal: " << endl;
-        cin.ignore();
         getline(cin, alimentacion, '\n');
         alimentacion = convertidorStringMinuscula2(alimentacion);
     }while(!listaDietasDisponibles(alimentacion));
@@ -161,9 +156,10 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
     especie = convertidorStringMinuscula2(especie);
     estadoDeSalud = convertidorStringMinuscula2(estadoDeSalud);
     // 0 porque suponemos que animal no ha dormido al momento de ingresar
-    Animal* nuevoAnimal = new Animal(nombreTemp, especie, estadoDeSalud,idAnimalNuevo,tempMaxA,tempMinA,0,cantMaxDormir,false,false,edad,juguetesTemp);
+    Animal* nuevoAnimal = new Animal(nombreTemp, especie, estadoDeSalud,idAnimalNuevo,tempMaxA,tempMinA,0,cantMaxDormir,false,false,edad,juguetesTemp, alimentacion);
 
     nuevoAnimal->elegirAlim(alimentacion);
 
     this->animales.insert(make_pair(idAnimalNuevo, nuevoAnimal));
+    cout << nuevoAnimal->getNombre() << " fue llevado a su nueva habitat " << this->getNombre() <<endl;
 }

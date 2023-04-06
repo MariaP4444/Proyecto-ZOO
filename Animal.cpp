@@ -5,10 +5,17 @@
 #include "Animal.h"
 
 Animal::Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA,
-               int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad, vector<string> juguetes)
+               int cantHorasDormidas, int cantMaxDormir, bool jugar, bool comer, int edad, vector<string> juguetes, string alimentacion)
         : nombre(nombre), especie(especie), estadoDeSalud(estadoDeSalud), id(id), tempMaxA(tempMaxA),
           tempMinA(tempMinA), cantHorasDormidas(cantHorasDormidas), cantMaxDormir(cantMaxDormir), jugar(jugar),
-          comer(comer), edad(edad), juguetes(juguetes) {}
+          comer(comer), edad(edad), juguetes(juguetes), alimentacion(alimentacion){}
+
+string convertidorStringMinuscula3(string palabra){
+    for(char& c : palabra){
+        c = std::tolower(c);
+    }
+    return palabra;
+}
 
 string Animal::getNombre() {
     return this->nombre;
@@ -106,9 +113,19 @@ void Animal::setEdad(int edad) {
     Animal::edad = edad;
 }
 
+bool Animal::eliminarJuguetes(string jugueteElimanar) {
+    if(find(this->juguetes.begin(),this->juguetes.end(),jugueteElimanar)!= this->juguetes.end()){
+        this->juguetes.erase(find(this->juguetes.begin(),this->juguetes.end(),jugueteElimanar));
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 void Animal::menuAnimal() {
-    int opc, edad, hDormir;
-    string salud;
+    int opc, edad, hDormir,cantJuguetes;
+    string salud,jugueteNom, jugueteEliminar;
     do {
         cout << "\n** Seleccine el dato a cambiar\n";
         cout << "1. Edad\n";
@@ -116,34 +133,58 @@ void Animal::menuAnimal() {
         cout << "3. Horas de suenio maximas\n";
         cout << "4. Cantidad de porciones en dieta\n";
         cout << "5. Agregar juguetes\n";
+        cout << "6. Eliminar juguete\n";
         cout << "0. Guardar y salir\n";
 
         cin >> opc;
 
         switch (opc) {
             case 1:
-                cin >> edad;
+                do {
+                    cout << "Ingrese la nueva edad del animal: " << endl;
+                    cin >> edad;
+                }while(edad <= 0 || edad > 100);
                 this->setEdad(edad);
                 break;
             case 2:
-                cin.ignore();
+                cout << "Ingrese el estado actual de salud del animal: " << endl;
                 getline(cin, salud, '\n');
-                for (char &c: salud) {
-                    c = std::tolower(c);
-                }
+                salud = convertidorStringMinuscula3(salud);
                 this->setEstadoDeSalud(salud);
                 break;
             case 3:
-                cin >> hDormir;
+                do {
+                    cout << "Ingrese las nuevas horas de sueño del animal: " << endl;
+                    cin >> hDormir;
+                }while(hDormir <= 0);
                 this->setTempMaxA(hDormir);
                 break;
             case 4:
                 break;
 
             case 5:
+
+                do {
+                    cout << "Ingrese el numero de juguetes que va agregar a la lita del animal: " << endl;
+                    cin >> cantJuguetes;
+                }while(cantJuguetes <= 0);
+
+                while(cantJuguetes > 0){
+                    cout << " - Ingrese ingrese el nombre del juguete: " << endl;
+                    cin.ignore();
+                    getline(cin, jugueteNom, '\n');
+                    jugueteNom= convertidorStringMinuscula3(jugueteNom);
+                    this->juguetes.push_back(jugueteNom);
+                    cantJuguetes--;
+                }
                 break;
 
             case 6:
+                do {
+                    cout << "Ingrese el nombre: " << endl;
+                    getline(cin, jugueteEliminar, '\n');
+                    jugueteEliminar = convertidorStringMinuscula3(jugueteEliminar);
+                }while(!eliminarJuguetes(jugueteEliminar));
                 break;
             default:
                 break;
@@ -196,6 +237,8 @@ unordered_map<string, int> Animal::getAlimentos() {
 void Animal::setAlimentos(unordered_map<string, int> alimentos) {
     Animal::alimentos = alimentos;
 }
+
+
 
 
 

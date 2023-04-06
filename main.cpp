@@ -34,12 +34,10 @@ void cuartaOpcion(Zoo* pZoo){
     Animal *tAnimal;
     string nombreHab;
     int idAnimal;
-    cout << "Ingrese el habitat del animal " << endl;
+    cout << "Ingrese el habitat del animal: " << endl;
     cin >> nombreHab;
 
-    for(char& c : nombreHab){
-        c = std::tolower(c);
-    }
+    nombreHab = convertidorStringMinuscula(nombreHab);
 
     //busco el habita para listar los animales de ese habitat
     tHabitat = pZoo->devolverPunteroVec(nombreHab);
@@ -74,9 +72,9 @@ void segundaOpcion(Zoo* pZoo){
     Habitat* habitatTemp;
 
     cout << "Ingrese la temperatura minima del animal " << endl;
-    cin >> tempMaxA;
-    cout << "Ingrese la temperatura maxima del animal  " << endl;
     cin >> tempMinA;
+    cout << "Ingrese la temperatura maxima del animal  " << endl;
+    cin >> tempMaxA;
 
     if(!pZoo->exieteHabitatTemp(tempMaxA, tempMinA)) {
         throw invalid_argument("No hay ningun habitat disponible para este animal");
@@ -203,6 +201,7 @@ void mostrarMenu2(Zoo* pZoo) {
 int main() {
 
     Zoo* pZoo = new Zoo();
+    pZoo->registrarHabitat("polar",-100,0);
     if(pZoo->getZooNoVacio()){
         mostrarMenu2(pZoo);
 
