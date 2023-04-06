@@ -129,13 +129,13 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
     do {
         cout << "Ingrese las horas de sueño del animal " << endl;
         cin >> cantMaxDormir;
-    }while(cantMaxDormir >= 0);
+    }while(cantMaxDormir <= 0);
 
 
     do {
         cout << "Ingrese el numero de jugetes que va a tener el animal " << endl;
         cin >> cantJuguetes;
-    }while(cantJuguetes >= 0);
+    }while(cantJuguetes <= 0);
 
     while(cantJuguetes > 0){
         cout << "Ingrese ingrese el nombre del juguete " << endl;

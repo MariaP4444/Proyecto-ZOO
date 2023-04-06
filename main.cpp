@@ -24,6 +24,7 @@ void quintaOpcion(Zoo* pZoo){
 
 }
 
+// CUARTA OPCION
 
 void cuartaOpcion(Zoo* pZoo){
 
@@ -70,6 +71,7 @@ void segundaOpcion(Zoo* pZoo){
     string  habitat;
     int tempMaxA, tempMinA;
     int contadorOp = 1;
+    Habitat* habitatTemp;
 
     cout << "Ingrese la temperatura minima del animal " << endl;
     cin >> tempMaxA;
@@ -96,7 +98,8 @@ void segundaOpcion(Zoo* pZoo){
         habitat = convertidorStringMinuscula(habitat);
     } while (!opcionHabitatDis(habitat,habitatsDisponibles));
 
-
+    habitatTemp= pZoo->devolverPunteroVec(habitat);
+    habitatTemp->agregarAnimal(pZoo->getCantAnimales(),tempMaxA, tempMinA);
 
 }
 
