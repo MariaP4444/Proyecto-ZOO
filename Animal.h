@@ -95,6 +95,8 @@ public:
 
     bool eliminarJuguetes(string jugueteElimanar);
 
+    void editarAlimento();
+
 };
 
 

@@ -90,7 +90,7 @@ void Habitat::infoCompletaAn(){
 bool listaDietasDisponibles(string tipoDieta){
     vector<string> dietasDispo;
     dietasDispo.push_back("carnivoro");
-    dietasDispo.push_back("hervivoro");
+    dietasDispo.push_back("herbivoro");
     dietasDispo.push_back("omnivoro");
 
     if(find(dietasDispo.begin(),dietasDispo.end(),tipoDieta)!= dietasDispo.end()){
@@ -145,7 +145,7 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
 
     do{
         cout << "\nTipo de dieta disponible:" << endl;
-        cout << "\n - Carnivoro \n - Hervivoro \n - Omnivoro" << endl;
+        cout << "\n - Carnivoro \n - Herbivoro \n - Omnivoro" << endl;
         cout << "Ingrese el tipo de alimentacion del  animal: " << endl;
         getline(cin, alimentacion, '\n');
         alimentacion = convertidorStringMinuscula2(alimentacion);

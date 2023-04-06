@@ -123,6 +123,34 @@ bool Animal::eliminarJuguetes(string jugueteElimanar) {
     }
 }
 
+void Animal::editarAlimento() {
+    unordered_map <string, int>::iterator itMapA;
+    int kg = 0;
+
+    for (itMapA = this->alimentos.begin(); itMapA != this->alimentos.end(); ++itMapA) {
+        int opc = 0;
+
+        cout << "  Alimento: " << itMapA->first << endl;
+        cout << "  Kg: " << itMapA->second << endl;
+        cout << "------------------------------------" << endl;
+
+        while(opc != 1 && opc != 2){
+
+            cout << "1.Editar" << endl;
+            cout << "2.Guardar" << endl;
+            cin >> opc;
+
+        }
+        if (opc == 1) {
+            do {
+                cout << "Ingrese la nueva cantidad de kg de alimento: " << endl;
+                cin >> kg;
+                itMapA->second = kg;
+            } while (kg <= 0);
+        }
+    }
+}
+
 void Animal::menuAnimal() {
     int opc, edad, hDormir,cantJuguetes;
     string salud,jugueteNom, jugueteEliminar;
@@ -131,7 +159,7 @@ void Animal::menuAnimal() {
         cout << "1. Edad\n";
         cout << "2. Estado de salud\n";
         cout << "3. Horas de suenio maximas\n";
-        cout << "4. Cantidad de porciones en dieta\n";
+        cout << "4. Cantidad de kg en dieta\n";
         cout << "5. Agregar juguetes\n";
         cout << "6. Eliminar juguete\n";
         cout << "0. Guardar y salir\n";
@@ -160,6 +188,7 @@ void Animal::menuAnimal() {
                 this->setTempMaxA(hDormir);
                 break;
             case 4:
+                editarAlimento();
                 break;
 
             case 5:
@@ -222,7 +251,6 @@ void Animal::elegirAlim(string tipoAlim) {
         this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
         cout << "- Pollo" << endl;
         this->alimentos.insert(make_pair("pollo", aseguradorDeCantAlimetos()));
-        cout << "- Pescado" << endl;
         cout << "- Frutas" << endl;
         this->alimentos.insert(make_pair("frutas", aseguradorDeCantAlimetos()));
         cout << "- Verduras" << endl;

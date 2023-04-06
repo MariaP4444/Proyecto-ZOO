@@ -39,7 +39,7 @@ void cuartaOpcion(Zoo* pZoo){
 
     nombreHab = convertidorStringMinuscula(nombreHab);
 
-    //busco el habita para listar los animales de ese habitat
+    //busco el habitat para listar los animales de ese habitat
     tHabitat = pZoo->devolverPunteroVec(nombreHab);
     tHabitat->listarAnimales();
 
@@ -186,6 +186,7 @@ void mostrarMenu2(Zoo* pZoo) {
                 cuartaOpcion(pZoo);
                 break;
             case 5:
+                quintaOpcion(pZoo);
 
                 break;
             case 0:
