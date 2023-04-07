@@ -97,6 +97,13 @@ public:
 
     void editarAlimento();
 
+    void interactAnimal(string opc);
+
+    void comiendo(string nombre);
+
+    void jugando(string nombre);
+
+    bool existeAlim(string alimento);
 };
 
 

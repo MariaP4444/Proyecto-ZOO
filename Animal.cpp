@@ -123,6 +123,16 @@ bool Animal::eliminarJuguetes(string jugueteElimanar) {
     }
 }
 
+int aseguradorDeCantAlimetos(){
+    int cantidadComidad;
+    do{
+        cout << "Por favor ingrese la cantidad de Kg que come el animal del alimento: " << endl;
+        cin >> cantidadComidad;
+    }while(cantidadComidad<= 0);
+
+    return cantidadComidad;
+}
+
 void Animal::editarAlimento() {
     unordered_map <string, int>::iterator itMapA;
     int kg = 0;
@@ -142,11 +152,8 @@ void Animal::editarAlimento() {
 
         }
         if (opc == 1) {
-            do {
-                cout << "Ingrese la nueva cantidad de kg de alimento: " << endl;
-                cin >> kg;
-                itMapA->second = kg;
-            } while (kg <= 0);
+            itMapA->second = aseguradorDeCantAlimetos();
+
         }
     }
 }
@@ -221,15 +228,96 @@ void Animal::menuAnimal() {
     } while (opc != 0);
 }
 
-int aseguradorDeCantAlimetos(){
-    int cantidadComidad;
-    do{
-        cout << "Por favor ingrese la cantidad de Kg que come el animal del alimento: " << endl;
-        cin >> cantidadComidad;
-    }while(cantidadComidad<= 0);
+void Animal::jugando(string nombre) {
+    int opc;
+    cout << "**Juguetes de " << nombre << endl;
 
-    return cantidadComidad;
+    for (int i = 0; i < this->juguetes.size(); i++) {
+        cout << i+1 << ". " << juguetes[i] << endl;
+    }
+
+    do {
+        cout << "Ingrese una opcion: " << endl;
+        cin >> opc;
+        opc -=1;
+    }while(opc < 0 || opc > juguetes.size());
+
+    cout << nombre << " esta jugando con su " << juguetes[opc] << endl;
+
 }
+
+bool Animal::existeAlim(string alimento) {
+    unordered_map <string, int>::iterator itMapA;
+    for (itMapA = this->alimentos.begin(); itMapA != this->alimentos.end(); ++itMapA) {
+        if(itMapA->first == alimento){
+            return true;
+        }
+    }
+    cout << "Alimento no valido para el animal" << endl;
+    return false;
+}
+
+void Animal::comiendo(string nombre) {
+    string alimento;
+    int kg;
+    bool existe = false;
+
+    while(!existe){
+        cout << "Ingrese el alimento : " << endl;
+        cin >> alimento;
+        existe = existeAlim(alimento);
+    }
+
+    //Tal vez esto no es necesario
+    do {
+        cout << "Ingrese la cantidad de kilogramos de alimento: " << endl;
+        cin >> kg;
+    }while(kg != this->alimentos[alimento]);
+    //
+
+    cout << nombre << " esta comiendo " << kg << "kg de " << alimento << endl;
+}
+
+
+void Animal::interactAnimal(string opc) {
+    string nombre = this->getNombre();
+    int hDormir;
+
+    if(opc == "jugar") {
+        if(!jugar) {
+            jugando(nombre);
+            this->jugar = true;
+        }
+        else{
+            cout << nombre <<" ya ha jugado el dia de hoy" << endl;
+        }
+    }
+    else if(opc == "comer") {
+        comiendo(nombre);
+        comer = true;
+    }
+    else if(opc == "dormir") {
+        if (cantHorasDormidas < cantMaxDormir) {
+            do {
+                cout << "Ingrese las nuevas horas de sueño del animal: " << endl;
+                cin >> hDormir;
+                if (this->cantMaxDormir < hDormir + this->cantHorasDormidas) {
+                    cout << "Esta cantidad se excede del limite de suenio del animal " << endl;
+                }
+            } while (this->cantMaxDormir < hDormir + this->cantHorasDormidas);
+            this->cantHorasDormidas += hDormir;
+        }
+        else{
+            cout << nombre <<" ya ha dormido suficiente el dia de hoy" << endl;
+        }
+    }
+    else {
+        throw invalid_argument("Esta no es una actividad posible");
+    }
+
+
+}
+
 
 void Animal::elegirAlim(string tipoAlim) {
     if (tipoAlim == "carnivoro") {

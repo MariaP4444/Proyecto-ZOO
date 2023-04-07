@@ -26,13 +26,13 @@ void quintaOpcion(Zoo* pZoo){
 
 // CUARTA OPCION
 
-void cuartaOpcion(Zoo* pZoo){
+void cuartaOpcion(Zoo* pZoo, int opc){
 
     //Primero: pedir info del habitat del animal
 
     Habitat *tHabitat;
     Animal *tAnimal;
-    string nombreHab;
+    string nombreHab, actividad;
     int idAnimal;
     cout << "Ingrese el habitat del animal: " << endl;
     cin >> nombreHab;
@@ -48,7 +48,14 @@ void cuartaOpcion(Zoo* pZoo){
     cin >> idAnimal;
     tAnimal = tHabitat->devolverPunteroAn(idAnimal);
 
-    tAnimal->menuAnimal();
+    if(opc == 4) {
+        tAnimal->menuAnimal();
+    }
+    else{
+        cout << "Ingrese la actividad a realizar " << endl;
+        cin >> actividad;
+        tAnimal->interactAnimal(actividad);
+    }
 
 }
 
@@ -183,10 +190,10 @@ void mostrarMenu2(Zoo* pZoo) {
                 pZoo->listarHabitatsConAnimales();
                 break;
             case 4:
-                cuartaOpcion(pZoo);
+                cuartaOpcion(pZoo, opc);
                 break;
             case 5:
-                quintaOpcion(pZoo);
+                cuartaOpcion(pZoo, opc);
 
                 break;
             case 0:

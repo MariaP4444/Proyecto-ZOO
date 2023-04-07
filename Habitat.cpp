@@ -133,9 +133,9 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
         cin >> cantJuguetes;
     }while(cantJuguetes <= 0);
 
+    cin.ignore();
     while(cantJuguetes > 0){
         cout << " - Ingrese ingrese el nombre del juguete: " << endl;
-        cin.ignore();
         getline(cin, jugueteNom, '\n');
         jugueteNom= convertidorStringMinuscula2(jugueteNom);
         juguetesTemp.push_back(jugueteNom);
