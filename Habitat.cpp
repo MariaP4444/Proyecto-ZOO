@@ -66,25 +66,34 @@ void Habitat::listarAnimales(){
 void Habitat::infoCompletaAn(){
 
     unordered_map <int, Animal*>::iterator itMapA;
-    cout << "Los animales de este habitat son:\n";
-
-    for (itMapA = this->animales.begin(); itMapA != this->animales.end(); ++itMapA){
-        Animal* tAnimal = itMapA->second;
-
-        cout << "  Nombre: " << tAnimal->getNombre() << endl;
-        cout << "  Especie: " << tAnimal->getEspecie() << endl;
-        cout << "  ID: " << itMapA->first << endl;
-        cout << "  Estado de salud: " << tAnimal->getEstadoDeSalud() << endl;
-        cout << "  Alimentacion: " << tAnimal->getAliemtacion() << endl;
-        cout << "  Edad: " << tAnimal->getEdad() << endl;
-        cout << "  Temperatura minima: " << tAnimal->getTempMinA() << endl;
-        cout << "  Temperatura maxima: " << tAnimal->getTempMaxA() << endl;
-        cout << "  Horas de suenio por dia: " << tAnimal->getCantMaxDormir() << endl;
-        cout << "  Horas dormidas el dia de hoy: " << tAnimal->getCantHorasDormidas() << endl;
-        cout << "  Ha jugado el dia de hoy: " << tAnimal->getJugar() << endl;
-        cout << "  Ha comido el dia de hoy: " << tAnimal->getComer() << endl << endl;
-        cout << "--------------------------------------------------------" << endl;
+    int contador = 1;
+    cout << "-------------------------Los animales de este habitat son:--------------------------\n";
+    if(this->animales.empty()){
+        cout << "     OPS No hay animales por el momento" << endl;
     }
+    else{
+        for (itMapA = this->animales.begin(); itMapA != this->animales.end(); ++itMapA){
+            Animal* tAnimal = itMapA->second;
+            cout << " ++++++++++++++++ Animal N°" << contador << " ++++++++++++++++" << endl;
+            cout << "  Nombre: " << tAnimal->getNombre() << endl;
+            cout << "  Especie: " << tAnimal->getEspecie() << endl;
+            cout << "  ID: " << itMapA->first << endl;
+            cout << "  Estado de salud: " << tAnimal->getEstadoDeSalud() << endl;
+            cout << "  Alimentacion: " << tAnimal->getAliemtacion() << endl;
+            cout << "  Edad: " << tAnimal->getEdad() << endl;
+            cout << "  Temperatura minima: " << tAnimal->getTempMinA() << endl;
+            cout << "  Temperatura maxima: " << tAnimal->getTempMaxA() << endl;
+            cout << "  Horas de suenio por dia: " << tAnimal->getCantMaxDormir() << endl;
+            cout << "  Horas dormidas el dia de hoy: " << tAnimal->getCantHorasDormidas() << endl;
+            cout << "  Ha jugado el dia de hoy: " << tAnimal->getJugar() << endl;
+            cout << "  Ha comido el dia de hoy: " << tAnimal->getComer() << endl << endl;
+            cout << "  Esta es la lista de alimetos del animal: " << endl;
+            tAnimal->mostrarMapAlimentacion();
+            cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+            contador++;
+        }
+    }
+
 }
 
 bool listaDietasDisponibles(string tipoDieta){
@@ -142,7 +151,7 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
         cantJuguetes--;
     }
 
-
+    cin.ignore();
     do{
         cout << "\nTipo de dieta disponible:" << endl;
         cout << "\n - Carnivoro \n - Herbivoro \n - Omnivoro" << endl;

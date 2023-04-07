@@ -16,14 +16,6 @@ string convertidorStringMinuscula(string palabra){
     return palabra;
 }
 
-
-// QUINTA OPCION
-
-void quintaOpcion(Zoo* pZoo){
-
-
-}
-
 // CUARTA OPCION
 
 void cuartaOpcion(Zoo* pZoo, int opc){
@@ -96,9 +88,9 @@ void segundaOpcion(Zoo* pZoo){
         contadorOp ++;
     }
 
+    cin.ignore();
     do{
         cout << "Ingrese el nombre del habitat a cual desea ingresar al animal: " << endl;
-        cin.ignore();
         getline(cin, habitat, '\n');
         habitat = convertidorStringMinuscula(habitat);
     } while (!opcionHabitatDis(habitat,habitatsDisponibles));

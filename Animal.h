@@ -104,6 +104,8 @@ public:
     void jugando(string nombre);
 
     bool existeAlim(string alimento);
+
+    void mostrarMapAlimentacion();
 };
 
 

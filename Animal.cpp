@@ -178,49 +178,56 @@ void Animal::menuAnimal() {
                 do {
                     cout << "Ingrese la nueva edad del animal: " << endl;
                     cin >> edad;
-                }while(edad <= 0 || edad > 100);
+                }while(edad < this->edad || edad > 100);
                 this->setEdad(edad);
+                cout << "Ahora la edad del animal es de"<<this->getEdad() << endl;
                 break;
             case 2:
+                cin.ignore();
                 cout << "Ingrese el estado actual de salud del animal: " << endl;
                 getline(cin, salud, '\n');
                 salud = convertidorStringMinuscula3(salud);
                 this->setEstadoDeSalud(salud);
+                cout << "Ahora el estado de salud  del animal es de"<<this->getEstadoDeSalud()<< endl;
                 break;
             case 3:
                 do {
                     cout << "Ingrese las nuevas horas de sueño del animal: " << endl;
                     cin >> hDormir;
                 }while(hDormir <= 0);
-                this->setTempMaxA(hDormir);
+                this->setCantMaxDormir(hDormir);
+                cout << "Ahora las horas de sueno del animal es de"<<this->getCantMaxDormir() << endl;
                 break;
             case 4:
                 editarAlimento();
+                cout << "Ya se edito con exito las porciones de alimentos" << endl;
                 break;
 
             case 5:
 
                 do {
-                    cout << "Ingrese el numero de juguetes que va agregar a la lita del animal: " << endl;
+                    cout << "Ingrese el numero de juguetes que va agregar a la lista del animal: " << endl;
                     cin >> cantJuguetes;
                 }while(cantJuguetes <= 0);
 
+                cin.ignore();
                 while(cantJuguetes > 0){
                     cout << " - Ingrese ingrese el nombre del juguete: " << endl;
-                    cin.ignore();
                     getline(cin, jugueteNom, '\n');
                     jugueteNom= convertidorStringMinuscula3(jugueteNom);
                     this->juguetes.push_back(jugueteNom);
                     cantJuguetes--;
                 }
+                cout << "Se agrego corectamente los/el jueguete/s" << endl;
                 break;
-
             case 6:
+                cin.ignore();
                 do {
                     cout << "Ingrese el nombre: " << endl;
                     getline(cin, jugueteEliminar, '\n');
                     jugueteEliminar = convertidorStringMinuscula3(jugueteEliminar);
                 }while(!eliminarJuguetes(jugueteEliminar));
+                cout << "Se elimino correctamente el juguete"<<jugueteEliminar << endl;
                 break;
             default:
                 break;
@@ -293,8 +300,14 @@ void Animal::interactAnimal(string opc) {
         }
     }
     else if(opc == "comer") {
-        comiendo(nombre);
-        comer = true;
+        if(!comer) {
+            comiendo(nombre);
+            this->comer = true;
+        }
+        else{
+            cout << nombre <<" ya ha comido el dia de hoy" << endl;
+        }
+
     }
     else if(opc == "dormir") {
         if (cantHorasDormidas < cantMaxDormir) {
@@ -352,6 +365,18 @@ unordered_map<string, int> Animal::getAlimentos() {
 
 void Animal::setAlimentos(unordered_map<string, int> alimentos) {
     Animal::alimentos = alimentos;
+}
+
+void Animal::mostrarMapAlimentacion() {
+    unordered_map<string, int>::iterator itMapP;
+    int contador = 1;
+
+    for (itMapP = this->alimentos.begin(); itMapP != this->alimentos.end(); ++itMapP){
+        cout << "   -- ALIMENTO:"<< contador<< "--"<<endl;
+        cout << "       Nombre: " << itMapP->first<< endl;
+        cout << "       Cantidad de kg: " << itMapP->second<< endl;
+        contador++;
+    }
 }
 
 

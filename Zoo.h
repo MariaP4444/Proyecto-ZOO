@@ -48,7 +48,7 @@ public:
 
     void listarHabitatsConAnimales();
 
-    void agregarAnimalaHabitat(Animal* Animal, string habitatAgregar);
+
 
 };
 

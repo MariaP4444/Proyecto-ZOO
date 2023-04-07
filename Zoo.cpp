@@ -78,9 +78,10 @@ void Zoo::listarHabitatsConAnimales(){
 
     for (itVectorHa = this->habitats.begin(); itVectorHa != this->habitats.end(); ++itVectorHa){
         Habitat* habitatTemp = *itVectorHa;
-        cout << "Habitat: " << habitatTemp->getNombre() << endl;
-        cout << "Temperatua maxima: " << habitatTemp->getTempMax();
-        cout << "Temperatua minima: " << habitatTemp->getTempMin();
+        cout << "--------------------Habitat: " << habitatTemp->getNombre()<< "--------------------" << endl;
+        cout << " - Temperatua maxima: " << habitatTemp->getTempMax() << endl;
+        cout << " - Temperatua minima: " << habitatTemp->getTempMin() << endl;
+        cout << "---------------------------------------------------------------" << endl;
         habitatTemp->infoCompletaAn();
     }
 }
@@ -110,8 +111,5 @@ vector<string> Zoo::listaHabitatsDisponibles(int temMax, int  temMin){
     return habitatsAnimal;
 }
 
-void Zoo::agregarAnimalaHabitat(Animal *Animal, string habitatAgregar) {
-
-}
 
 
