@@ -85,7 +85,7 @@ public:
 
     void setAliemtacion(string aliemtacion);
 
-    void menuAnimal();
+    void menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervivora);
 
     void elegirAlim(string tipoAlim);
 
@@ -106,6 +106,11 @@ public:
     bool existeAlim(string alimento);
 
     void mostrarMapAlimentacion();
+    void mostrarJuguetes();
+
+    void agregarAlimentoaMap(vector<string> listaAlimetos );
+    void agregarAlimentoaMapOmnivoro(vector<string> dieta1,vector<string> dieta2);
+    bool eliminarAlimento(string alimento);
 };
 
 

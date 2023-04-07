@@ -41,7 +41,7 @@ void cuartaOpcion(Zoo* pZoo, int opc){
     tAnimal = tHabitat->devolverPunteroAn(idAnimal);
 
     if(opc == 4) {
-        tAnimal->menuAnimal();
+        tAnimal->menuAnimal(pZoo->getCarnivoro(), pZoo->getHerbivoro());
     }
     else{
         cout << "Ingrese la actividad a realizar " << endl;
@@ -125,7 +125,7 @@ void primeraOpcion(Zoo* pZoo){
 void mostrarMenu1(Zoo* pZoo){
     int opc;
     do{
-        cout << "\n** Zoo MAVA\n";
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~ ZOO: "<< pZoo->getNombre()<< "~~~~~~~~~~~~~~~~~~~~~"<<"\n";
         cout << "1. Agregar habitat\n";
         cout << "0. Salir\n" << endl;
 
@@ -153,7 +153,7 @@ void mostrarMenu2(Zoo* pZoo) {
 
     do
     {
-        cout << "\n** Zoo MAVA\n";
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~ ZOO: "<< pZoo->getNombre()<< "~~~~~~~~~~~~~~~~~~~~~"<<"\n";
         cout << "1. Agregar habitat\n";
         cout << "2. Agregar anima\n";
         cout << "3. Lista de habitats y animales\n";
@@ -200,11 +200,44 @@ void mostrarMenu2(Zoo* pZoo) {
 
 int main() {
 
+    vector<string> tCarnivoro;
+    vector<string> tHerviboro;
     Zoo* pZoo = new Zoo();
-    pZoo->registrarHabitat("polar",-100,0);
+
+    tCarnivoro.push_back("vieiras");
+    tCarnivoro.push_back("gambas");
+    tCarnivoro.push_back("almejas");
+    tCarnivoro.push_back("visceras");
+    tCarnivoro.push_back("huevos");
+    tCarnivoro.push_back("cerdo");
+    tCarnivoro.push_back("pollo");
+    tCarnivoro.push_back("res");
+    tCarnivoro.push_back("pescado");
+
+    tHerviboro.push_back("semillas");
+    tHerviboro.push_back("raices");
+    tHerviboro.push_back("hojas");
+    tHerviboro.push_back("corteza");
+    tHerviboro.push_back("savia");
+    tHerviboro.push_back("flores");
+    tHerviboro.push_back("nectar");
+    tHerviboro.push_back("polen");
+    tHerviboro.push_back("frutas");
+    tHerviboro.push_back("verduras");
+    tHerviboro.push_back("granos");
+
+    pZoo->setNombre("MAVA");
+
+    pZoo->setCarnivoro(tCarnivoro);
+    pZoo->setHerbivoro(tHerviboro);
+
+    pZoo->registrarHabitat("polar",-60,0);
+    pZoo->registrarHabitat("selvatico",20,40);
+    pZoo->registrarHabitat("acuatico",1,19);
+    pZoo->registrarHabitat("desertico",40,60);
+
     if(pZoo->getZooNoVacio()){
         mostrarMenu2(pZoo);
-
     }
     else{
         mostrarMenu1(pZoo);
@@ -214,12 +247,3 @@ int main() {
     return 0;
 
 }
-
-/*
-vector<Habitat*>::iterator itVectorHab;
-
-for (itVectorHab = this->animales.begin(); itVectorHab != this->animales.end(); ++itVectorHab){
-Habitat* HabitatTemp = *itVectorHab;
-HabitatTemp->mostrarAnimales;
-}
-*/

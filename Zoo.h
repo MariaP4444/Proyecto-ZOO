@@ -25,12 +25,20 @@ private:
     int cantAnimales;
     bool zooNoVacio;
     vector<Habitat*> habitats;
+    vector<string> dietaCarnivora;
+    vector<string> dietaHerbivora;
 public:
     Zoo() = default;
 
 
     bool habitatRepetido(string nombre);
     void registrarHabitat(string nombre, int tMin, int tMax);
+
+    vector<string> getCarnivoro();
+    void setCarnivoro(vector<string> dietaCarnivora);
+
+    vector<string> getHerbivoro();
+    void setHerbivoro(vector<string> dietaHerbivora);
 
     bool getZooNoVacio();
     void setZooVacio(bool zooNoVacio);

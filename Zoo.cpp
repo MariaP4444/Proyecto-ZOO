@@ -36,6 +36,21 @@ void Zoo::setNombre(string nombre) {
     Zoo::nombre = nombre;
 }
 
+vector<string> Zoo::getCarnivoro(){
+    return this->dietaCarnivora;
+}
+
+void Zoo::setCarnivoro(vector<std::string> dietaCarnivora) {
+    Zoo::dietaCarnivora = dietaCarnivora;
+}
+
+vector<string> Zoo::getHerbivoro(){
+    return this->dietaHerbivora;
+}
+
+void Zoo::setHerbivoro(vector<std::string> dietaHerbivora) {
+    Zoo::dietaHerbivora = dietaHerbivora;
+}
 
 bool Zoo::habitatRepetido(string nombre){
     vector<Habitat*>::iterator itVectorHa;

@@ -89,6 +89,8 @@ void Habitat::infoCompletaAn(){
             cout << "  Ha comido el dia de hoy: " << tAnimal->getComer() << endl << endl;
             cout << "  Esta es la lista de alimetos del animal: " << endl;
             tAnimal->mostrarMapAlimentacion();
+            cout << "  Esta es la lista de juguetes del animal: " << endl;
+            tAnimal->mostrarJuguetes();
             cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
             contador++;
         }

@@ -158,9 +158,66 @@ void Animal::editarAlimento() {
     }
 }
 
-void Animal::menuAnimal() {
+bool buscarAlimentoenListaDieta(string alimento,vector<string> dieta){
+    if(find(dieta.begin(),dieta.end(),alimento) != dieta.end()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+void Animal::agregarAlimentoaMap(vector<string> dieta) {
+    string alimentoAgregar;
+    if(this->alimentos.size()< dieta.size()){
+        do{
+            cout << "Ingrese el nombre del alimento:"<< endl;
+            getline(cin, alimentoAgregar, '\n');
+            alimentoAgregar = convertidorStringMinuscula3(alimentoAgregar);
+            if(this->alimentos.count(alimentoAgregar)) {
+                cout << "Este alimento ya esta agregado a la dieta del animal " << endl;
+            }
+        }while(!buscarAlimentoenListaDieta(alimentoAgregar,dieta) && !this->alimentos.count(alimentoAgregar));
+        this->alimentos.insert(make_pair(alimentoAgregar,aseguradorDeCantAlimetos()));
+    }
+    else{
+        cout << " Al parecer el animal ya cuenta con la capacidad maxima de alimentos disponibles" << endl;
+    }
+}
+
+void Animal::agregarAlimentoaMapOmnivoro(vector<string> dieta1,vector<string> dieta2) {
+    string alimentoAgregar;
+    if(this->alimentos.size()< dieta1.size()+ dieta2.size()){
+        do{
+            cout << "Ingrese el nombre del alimento:"<< endl;
+            getline(cin, alimentoAgregar, '\n');
+            alimentoAgregar = convertidorStringMinuscula3(alimentoAgregar);
+            if(this->alimentos.count(alimentoAgregar)) {
+                cout << "Este alimento ya esta agregado a la dieta del animal " << endl;
+            }
+        }while(!buscarAlimentoenListaDieta(alimentoAgregar,dieta1)&& !buscarAlimentoenListaDieta(alimentoAgregar,dieta2) && !this->alimentos.count(alimentoAgregar));
+        this->alimentos.insert(make_pair(alimentoAgregar,aseguradorDeCantAlimetos()));
+    }
+    else{
+        cout << " Al parecer el animal ya cuenta con la capacidad maxima de alimentos disponibles" << endl;
+    }
+}
+
+bool Animal::eliminarAlimento(string alimento) {
+    if(this->alimentos.count(alimento)){
+        this->alimentos.erase(alimento);
+        cout << "Se ha eliminado: " << alimento << endl;
+        return true;
+    }
+    else{
+        cout << " No se ha encontrado el alimento que desea eliminar, vuelve a intentarlo" << endl;
+        return false;
+    }
+}
+
+void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervivora) {
     int opc, edad, hDormir,cantJuguetes;
-    string salud,jugueteNom, jugueteEliminar;
+    string salud,jugueteNom, jugueteEliminar, alimentoEliminar;
     do {
         cout << "\n** Seleccine el dato a cambiar\n";
         cout << "1. Edad\n";
@@ -169,7 +226,9 @@ void Animal::menuAnimal() {
         cout << "4. Cantidad de kg en dieta\n";
         cout << "5. Agregar juguetes\n";
         cout << "6. Eliminar juguete\n";
-        cout << "0. Guardar y salir\n";
+        cout << "7. Agregar alimeto a la dieta del animal\n";
+        cout << "8. Eliminar alimeto de la dieta del animal\n";
+        cout << "0. Guardar y salir"<< endl;
 
         cin >> opc;
 
@@ -229,6 +288,30 @@ void Animal::menuAnimal() {
                 }while(!eliminarJuguetes(jugueteEliminar));
                 cout << "Se elimino correctamente el juguete"<<jugueteEliminar << endl;
                 break;
+            case 7:
+                cin.ignore();
+                if(alimentacion == "carnivoro"){
+                    agregarAlimentoaMap(dietaCarnivora);
+                }
+                else if(alimentacion == "hervivoro"){
+                    cin.ignore();
+                    agregarAlimentoaMap(dietaHervivora);
+                }
+                else{
+                    cin.ignore();
+                    agregarAlimentoaMapOmnivoro(dietaHervivora,dietaCarnivora);
+                }
+                cout << "Se agrego corectamente el alimento" << endl;
+                break;
+            case 8:
+                cin.ignore();
+                do {
+                    cout << "Ingrese el alimento: " << endl;
+                    getline(cin, alimentoEliminar, '\n');
+                    alimentoEliminar = convertidorStringMinuscula3(alimentoEliminar);
+                }while(!eliminarAlimento(alimentoEliminar));
+                cout << "Se elimino correctamente el alimento"<<alimentoEliminar << endl;
+                break;
             default:
                 break;
         }
@@ -274,8 +357,6 @@ void Animal::comiendo(string nombre) {
         cin >> alimento;
         existe = existeAlim(alimento);
     }
-
-    //Tal vez esto no es necesario
     do {
         cout << "Ingrese la cantidad de kilogramos de alimento: " << endl;
         cin >> kg;
@@ -284,7 +365,6 @@ void Animal::comiendo(string nombre) {
 
     cout << nombre << " esta comiendo " << kg << "kg de " << alimento << endl;
 }
-
 
 void Animal::interactAnimal(string opc) {
     string nombre = this->getNombre();
@@ -331,23 +411,27 @@ void Animal::interactAnimal(string opc) {
 
 }
 
-
 void Animal::elegirAlim(string tipoAlim) {
     if (tipoAlim == "carnivoro") {
+
         cout << "- Res" << endl;
         this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
         cout << "- Pollo" << endl;
         this->alimentos.insert(make_pair("pollo", aseguradorDeCantAlimetos()));
         cout << "- Pescado" << endl;
         this->alimentos.insert(make_pair("pescado", aseguradorDeCantAlimetos()));
+
     } else if (tipoAlim == "herbivoro") {
+
         cout << "- Frutas" << endl;
         this->alimentos.insert(make_pair("frutas", aseguradorDeCantAlimetos()));
         cout << "- Verduras" << endl;
         this->alimentos.insert(make_pair("Verduras", aseguradorDeCantAlimetos()));
         cout << "- Granos" << endl;
         this->alimentos.insert(make_pair("granos", aseguradorDeCantAlimetos()));
+
     } else if (tipoAlim == "omnivoro") {
+
         cout << "- Res" << endl;
         this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
         cout << "- Pollo" << endl;
@@ -379,10 +463,12 @@ void Animal::mostrarMapAlimentacion() {
     }
 }
 
+void Animal::mostrarJuguetes() {
+    vector<string>::iterator itVector;
+    int contador = 1;
 
-
-
-
-
-
-
+    for (itVector = this->juguetes.begin(); itVector!= this->juguetes.end(); ++itVector){
+        cout << contador << ". " << (*itVector) << endl;
+        contador++;
+    }
+}
