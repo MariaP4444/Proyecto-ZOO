@@ -3,14 +3,7 @@
 //
 
 #include "Zoo.h"
-/*
-void Zoo::registrarHabitat(int id, string nombre, string sexo, string nacimiento, string hospital, string origen){
 
-    Habitat* pHabitat = new Habitat(nombre, tMin, tMax);
-    this->habitats.insert(make_pair(id, pHabitat));
-}
-
-*/
 
 bool Zoo::getZooNoVacio() {
     return this->zooNoVacio;
@@ -64,6 +57,8 @@ bool Zoo::habitatRepetido(string nombre){
     return false;
 }
 
+//Esta funcion comprueba si el habitat ingresado ya existe, esto cn el fin de evitar agregar habitats repetidos
+// si no lo esta, lo agrega al vector "habitats" de Zoo
 void Zoo::registrarHabitat(string nombre, int tMin, int tMax) {
     if (this->habitatRepetido(nombre)) {
         cout << "Este habitat ya existe " << endl;
@@ -74,7 +69,7 @@ void Zoo::registrarHabitat(string nombre, int tMin, int tMax) {
 
     }
 }
-
+//Retorna el puntero tipo habitat segun el nombre del habitat
 Habitat* Zoo::devolverPunteroVec(string nombre){
     vector<Habitat*>::iterator itVectorHa;
 
@@ -88,6 +83,7 @@ Habitat* Zoo::devolverPunteroVec(string nombre){
     return nullptr;
 }
 
+//Esta funcion imprime la informacion de cada habitat y la informacion de sus animales correspondientes
 void Zoo::listarHabitatsConAnimales(){
     vector<Habitat*>::iterator itVectorHa;
 
@@ -102,7 +98,8 @@ void Zoo::listarHabitatsConAnimales(){
 }
 
 
-
+//Esta funcion recorre el vector de habitats para encontrar si hay algun habitat que se ajuste a
+//la temperatura del animal
 bool Zoo::exieteHabitatTemp(int temMax, int temMin) {
     vector<Habitat*>::iterator itVector;
 
@@ -114,6 +111,8 @@ bool Zoo::exieteHabitatTemp(int temMax, int temMin) {
     return false;
 }
 
+//Esta funcion crea y retorna un vector con los nombres de los habitat que se ajusten al animal,
+//esto para que el usuario no digite un habitat no adecuado para el animal
 vector<string> Zoo::listaHabitatsDisponibles(int temMax, int  temMin){
     vector<Habitat*>::iterator itVector;
     vector<string> habitatsAnimal;

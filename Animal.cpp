@@ -546,6 +546,8 @@ void Animal::interactAnimal(string opc) {
 
 
 }
+//Esta funcion agrega ciertos alimentos por defecto segun el tipo de dieta
+//y le pide al usuario ingresar las cantidades
 
 void Animal::elegirAlim(string tipoAlim) {
     bool terminado = false;

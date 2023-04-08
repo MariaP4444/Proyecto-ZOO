@@ -10,6 +10,7 @@
 
 using namespace std;
 
+//Funcion que dado un string, retorna en la misma en minusculas, para evitar errores al comparar strings
 string convertidorStringMinuscula(string palabra){
     for(char& c : palabra){
         c = std::tolower(c);
@@ -73,6 +74,7 @@ void cuartaOpcion(Zoo* pZoo, int opc){
 
 //SEGUNDA OPCION
 
+//Este metodo nos permite comprobar que el habitat seleccionado por el usuario sea un habitat disponible para el animal
 bool opcionHabitatDis(string habitat, vector<string> habitatsDisponibles){
 
     if(find(habitatsDisponibles.begin(),habitatsDisponibles.end(),habitat)!= habitatsDisponibles.end()){
@@ -84,6 +86,7 @@ bool opcionHabitatDis(string habitat, vector<string> habitatsDisponibles){
 
 }
 
+//Con este metodo y otros mas se le permite al usuario crear un animal
 void segundaOpcion(Zoo* pZoo){
     string  habitat;
     int tempMaxA, tempMinA;
@@ -103,7 +106,7 @@ void segundaOpcion(Zoo* pZoo){
         throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
     }
 
-
+//Comprobamos con las temperaturas minima y maxima si hay un habitat adecuado para el animal
     if(!pZoo->exieteHabitatTemp(tempMaxA, tempMinA)) {
         throw invalid_argument("No hay ningun habitat disponible para este animal");
     }
@@ -111,19 +114,21 @@ void segundaOpcion(Zoo* pZoo){
     cout << "-- Segun estos datos los habitats disponibles para el animal son:" << endl;
     vector<string> habitatsDisponibles= pZoo->listaHabitatsDisponibles(tempMaxA, tempMinA);
 
-
+//se imprimen los habitats adecuados para el animal
     for (int i = 0; i < habitatsDisponibles.size(); i++){
         cout << contadorOp <<".   "<<habitatsDisponibles[i]<< endl;
         contadorOp ++;
     }
 
     cin.ignore();
+    //Se le pide al usuario ingresar el nombre del habitat
     do{
         cout << "Ingrese el nombre del habitat a cual desea ingresar al animal: " << endl;
         getline(cin, habitat, '\n');
 
         habitat = convertidorStringMinuscula(habitat);
     } while (!opcionHabitatDis(habitat,habitatsDisponibles));
+
 
     habitatTemp= pZoo->devolverPunteroVec(habitat);
     bool terminado = false;
@@ -145,7 +150,9 @@ void segundaOpcion(Zoo* pZoo){
 }
 
 // PRIMERA OPCION
-
+/* Funcion que dados ciertos valores crea o no crea un habitat
+ *
+ */
 void primeraOpcion(Zoo* pZoo){
     string nombre;
     int tMin, tMax;
@@ -167,17 +174,17 @@ void primeraOpcion(Zoo* pZoo){
         throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
     }
 
-    for(char& c : nombre){
-        c = std::tolower(c);
-    }
+    nombre = convertidorStringMinuscula(nombre);
 
     pZoo->registrarHabitat(nombre, tMin, tMax);
 
 }
 
+//Menu para cuando no hay habitats
 void mostrarMenu1(Zoo* pZoo){
     bool terminado = false;
     int opc;
+
     do{
         cout << "\n~~~~~~~~~~~~~~~~~~~~~ ZOO: "<< pZoo->getNombre()<< "~~~~~~~~~~~~~~~~~~~~~"<<"\n";
         cout << "1. Agregar habitat\n";
@@ -187,6 +194,7 @@ void mostrarMenu1(Zoo* pZoo){
         if(!cin.good()){
             throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
         }
+
         switch (opc)
         {
             case 1:
@@ -194,6 +202,7 @@ void mostrarMenu1(Zoo* pZoo){
                     try {
                         primeraOpcion(pZoo);
                         opc = -1;
+                        // -1 para salir de este menu, ya que ahora tenemos 1 habitat
                         terminado = true;
                     }
                     catch (const invalid_argument error) {
@@ -216,6 +225,7 @@ void mostrarMenu1(Zoo* pZoo){
     }while (opc != -1 && opc != 0);
 }
 
+//Menu para cuando hay al menos 1 habitat
 void mostrarMenu2(Zoo* pZoo) {
     int opc, cantAnimales = 0;
     bool terminado = false;
@@ -256,11 +266,13 @@ void mostrarMenu2(Zoo* pZoo) {
             case 2:
                 do {
                     try {
+                        //Este es un caso de excepcion que maneja el caso en que no exista un habitat el cual cumpla
+                        //con las necesidades minimas del animal
                         try{
                             segundaOpcion(pZoo);
                         }
                         catch (invalid_argument e){
-                            cout << "Por favor crea un habita2t para este animal y luego lo vuelves a intentar"<< endl;
+                            cout << "Por favor crea un habitat para este animal y luego lo vuelves a intentar"<< endl;
                         }
                         terminado = true;
                     }
@@ -317,9 +329,11 @@ void mostrarMenu2(Zoo* pZoo) {
 
 int main() {
 
+    Zoo *pZoo = new Zoo();
+// Creacion de la lista de alimentos pertenecientes a cada tipo de alimentacion
+
     vector<string> tCarnivoro;
     vector<string> tHerviboro;
-    Zoo *pZoo = new Zoo();
 
     tCarnivoro.push_back("vieiras");
     tCarnivoro.push_back("gambas");
@@ -343,20 +357,26 @@ int main() {
     tHerviboro.push_back("verduras");
     tHerviboro.push_back("granos");
 
+    //Asignacion del nombre del zoologico
     pZoo->setNombre("MAVA");
 
     pZoo->setCarnivoro(tCarnivoro);
     pZoo->setHerbivoro(tHerviboro);
 
+    //Creacion de los 4 habitats basicos
     pZoo->registrarHabitat("polar", -60, 0);
     pZoo->registrarHabitat("selvatico", 20, 40);
     pZoo->registrarHabitat("acuatico", 1, 19);
     pZoo->registrarHabitat("desertico", 40, 60);
 
+    //manejo de posibles entradas no deseadas
     bool terminado = false;
     do {
         try {
-
+            /* Manejo de existencia de al menos 1 habitat
+             * Esta separacion se hace con el fin de evitar que el usario acceda a opciones que
+             * no funcionarian sin tener al menos un habitat
+             */
             if (pZoo->getZooNoVacio()) {
                 mostrarMenu2(pZoo);
             } else {

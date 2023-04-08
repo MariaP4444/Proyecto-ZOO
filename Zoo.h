@@ -18,6 +18,9 @@ using namespace std;
  * - Nombre: Nombre del zoologico
  * - cantAnimales: contador de animales dentro del zoologico, este sirve para asignarles un ID a los animales para poder identificarlos
  * - zooVacio: booleano que nos ayudara a saber si por lo menos existe un habitat
+ * - habitats: vector que guarda punteros tipo habitat
+ * - dietaCarnivora y dietaHerbivora: vectores que guardan los alimentos permitidos para una dieta carnivora/herbivora, hechos con el fin de
+ * evitar que se agregen alimentos a una dieta que no correspondan a esta dieta.
 */
 class Zoo {
 private:

@@ -13,6 +13,14 @@
 
 using namespace std;
 
+/* ATRIBUTOS
+ * nombre: nombre del habitat
+ * tempMax: temperatura maxima del habitat
+ * tempMin: temperatura minima del habitat
+ * animales: mapa no ordenado que guarda los punteros de los animales pertenecientes al habitat como valor
+ * y los id de los animales como clave
+ */
+
 class Habitat {
 private:
     string nombre;

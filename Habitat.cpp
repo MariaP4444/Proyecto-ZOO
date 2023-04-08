@@ -97,7 +97,7 @@ void Habitat::infoCompletaAn(){
     }
 
 }
-
+//Esta funcion comprueba si la dieta ingresada por el usuario es una dieta permitida
 bool listaDietasDisponibles(string tipoDieta){
     vector<string> dietasDispo;
     dietasDispo.push_back("carnivoro");
@@ -113,7 +113,7 @@ bool listaDietasDisponibles(string tipoDieta){
 
 }
 
-
+//Este metodo pide todos los datos del animal, a excepcion de las cantidades de los alimentos
 void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
     string nombreTemp, especie, estadoDeSalud, alimentacion, jugueteNom;
     int  cantMaxDormir, cantJuguetes, edad;
@@ -182,6 +182,7 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
     // 0 porque suponemos que animal no ha dormido al momento de ingresar
     Animal* nuevoAnimal = new Animal(nombreTemp, especie, estadoDeSalud,idAnimalNuevo,tempMaxA,tempMinA,0,cantMaxDormir,false,false,edad,juguetesTemp, alimentacion);
 
+    //Agrega los alimentos que van por defecto
     nuevoAnimal->elegirAlim(alimentacion);
 
     this->animales.insert(make_pair(idAnimalNuevo, nuevoAnimal));

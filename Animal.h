@@ -13,6 +13,24 @@
 
 using namespace std;
 
+/* ATRIBUTOS
+ *
+ * Nombre: nombre del animal
+ * Especie: tipo de especie
+ * estadoDeSalud: estado de salud del animal
+ * alimentacion: tipo de alimentacion del animal (carnivora, herbivora, omnivora)
+ * id: identificacion unica del animal
+ * edad: edad del animal
+ * tempMaxA: temperatura maxima adecuada para el animal
+ * tempMinA: temperatura minima adecuada para el animal
+ * cantHorasDormidas: horas dormidas en el dia
+ * cantMaxDormir: cantidad limite de horas que puede dormir un animal
+ * jugar: booleano que indica si el animal ha jugado en el dia
+ * comer: booleano que indica si el animal ha comido en el dia
+ * juguetes: vector tipo string que guarda los juguetes del animal
+ * alimentos: mapa no ordenado que relaciona un tipo de alimento con una cantidad
+ * estos son los alimentos de la dieta del animal
+ */
 class Animal {
 private:
     string nombre;
