@@ -98,6 +98,7 @@ void segundaOpcion(Zoo* pZoo){
     habitatTemp= pZoo->devolverPunteroVec(habitat);
     habitatTemp->agregarAnimal(pZoo->getCantAnimales(),tempMaxA, tempMinA);
 
+    pZoo->setCantAnimales(pZoo->getCantAnimales()+1);
 }
 
 // PRIMERA OPCION

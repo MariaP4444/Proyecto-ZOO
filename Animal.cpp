@@ -281,12 +281,17 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                 break;
             case 6:
                 cin.ignore();
-                do {
-                    cout << "Ingrese el nombre: " << endl;
-                    getline(cin, jugueteEliminar, '\n');
-                    jugueteEliminar = convertidorStringMinuscula3(jugueteEliminar);
-                }while(!eliminarJuguetes(jugueteEliminar));
-                cout << "Se elimino correctamente el juguete"<<jugueteEliminar << endl;
+                if(juguetes.size() == 1){
+                    cout << "No puedes eliminar el unico juguete de " << nombre << endl;
+                }
+                else {
+                    do {
+                        cout << "Ingrese el nombre: " << endl;
+                        getline(cin, jugueteEliminar, '\n');
+                        jugueteEliminar = convertidorStringMinuscula3(jugueteEliminar);
+                    } while (!eliminarJuguetes(jugueteEliminar));
+                    cout << "Se elimino correctamente el juguete" << jugueteEliminar << endl;
+                }
                 break;
             case 7:
                 cin.ignore();
