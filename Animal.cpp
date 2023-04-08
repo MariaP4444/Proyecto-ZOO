@@ -11,6 +11,8 @@ Animal::Animal(string nombre, string especie, string estadoDeSalud, int id, int 
           tempMinA(tempMinA), cantHorasDormidas(cantHorasDormidas), cantMaxDormir(cantMaxDormir), jugar(jugar),
           comer(comer), edad(edad), juguetes(juguetes), alimentacion(alimentacion){}
 
+
+//Funcion que dado un string, retorna en la misma en minusculas, para evitar errores al comparar strings
 string convertidorStringMinuscula3(string palabra){
     for(char& c : palabra){
         c = std::tolower(c);
@@ -114,6 +116,16 @@ void Animal::setEdad(int edad) {
     Animal::edad = edad;
 }
 
+unordered_map<string, int> Animal::getAlimentos() {
+    return this->alimentos;
+}
+
+void Animal::setAlimentos(unordered_map<string, int> alimentos) {
+    Animal::alimentos = alimentos;
+}
+
+//Indica retornando un booleano si el juguete ingresado esta entre los juguetes del animal
+// Si esta, entonces lo elimina
 bool Animal::eliminarJuguetes(string jugueteElimanar) {
     if(find(this->juguetes.begin(),this->juguetes.end(),jugueteElimanar)!= this->juguetes.end()){
         this->juguetes.erase(find(this->juguetes.begin(),this->juguetes.end(),jugueteElimanar));
@@ -124,6 +136,13 @@ bool Animal::eliminarJuguetes(string jugueteElimanar) {
     }
 }
 
+/*Se asegura que la cantidad de kg ingresada sea como minimo 1
+ * Funciones que lo usan:
+ * editarAlimento
+ * agregarAlimentoaMap
+ * agregarAlimentoaMapOmnivoro
+ * elegirAlim
+*/
 int aseguradorDeCantAlimetos(){
     int cantidadComidad;
     do{
@@ -137,6 +156,8 @@ int aseguradorDeCantAlimetos(){
     return cantidadComidad;
 }
 
+// Recorre la lista de alimentos que estan en la dieta del animal, muestra la informacion de cada uno y
+// el usuario elige entre cambiarlo o mantenerlo, al cambiarlo, se asegura que ponga al menos 1kg
 void Animal::editarAlimento() {
     unordered_map <string, int>::iterator itMapA;
     int kg = 0;
@@ -179,6 +200,7 @@ void Animal::editarAlimento() {
     }
 }
 
+//Retorna un booleano indicando si el alimento ingresado pertenece al tipo de alimentacion del animal
 bool buscarAlimentoenListaDieta(string alimento,vector<string> dieta){
     if(find(dieta.begin(),dieta.end(),alimento) != dieta.end()){
         return true;
@@ -188,6 +210,8 @@ bool buscarAlimentoenListaDieta(string alimento,vector<string> dieta){
     }
 }
 
+//Pide los datos del alimento a añadir, se asegura que pertenezca al tipo de alimentacion del animal, que no este repetido
+// y que la cantidad sea valida. Funciona para las dietas carnivoras o herbivoras
 void Animal::agregarAlimentoaMap(vector<string> dieta) {
     string alimentoAgregar;
     if(this->alimentos.size()< dieta.size()){
@@ -199,6 +223,7 @@ void Animal::agregarAlimentoaMap(vector<string> dieta) {
                 cout << "Este alimento ya esta agregado a la dieta del animal " << endl;
             }
         }while(!buscarAlimentoenListaDieta(alimentoAgregar,dieta) && !this->alimentos.count(alimentoAgregar));
+        //caso de manejo para evitar ingresar alimento que no sea del tipo de dieta del animal y evitar repetir alimentos
 
         bool terminado = false;
         do {
@@ -221,6 +246,7 @@ void Animal::agregarAlimentoaMap(vector<string> dieta) {
     }
 }
 
+//Hace lo mismo que "agregarAlimentoaMap", pero acomodado para las dietas omnivoras
 void Animal::agregarAlimentoaMapOmnivoro(vector<string> dieta1,vector<string> dieta2) {
     string alimentoAgregar;
     if(this->alimentos.size()< dieta1.size()+ dieta2.size()){
@@ -254,6 +280,7 @@ void Animal::agregarAlimentoaMapOmnivoro(vector<string> dieta1,vector<string> di
     }
 }
 
+//Dado un alimento a eliminar busca si existe en el mapa "alimentos"
 bool Animal::eliminarAlimento(string alimento) {
     if(this->alimentos.count(alimento)){
         this->alimentos.erase(alimento);
@@ -266,7 +293,8 @@ bool Animal::eliminarAlimento(string alimento) {
     }
 }
 
-void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervivora) {
+//Menu para cambiar datos del animal
+void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHerbivora) {
     int opc, edad, hDormir,cantJuguetes;
     string salud,jugueteNom, jugueteEliminar, alimentoEliminar;
     bool terminado = false;
@@ -296,10 +324,13 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                     if(!cin.good()){
                         throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
                     }
+                    if(edad < this->edad){
+                        cout << "Esta edad es menor a la edad actual del animal" << endl;
+                    }
 
-                }while(edad < this->edad || edad > 100);
+                }while(edad < this->edad || edad > 100);// caso de manejo para que la nueva edad este en un rango permitido
                 this->setEdad(edad);
-                cout << "Ahora la edad del animal es de"<<this->getEdad() << endl;
+                cout << "Ahora la edad del animal es de "<<this->getEdad() << endl;
                 break;
 
             case 2:
@@ -309,7 +340,7 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
 
                 salud = convertidorStringMinuscula3(salud);
                 this->setEstadoDeSalud(salud);
-                cout << "Ahora el estado de salud  del animal es de"<<this->getEstadoDeSalud()<< endl;
+                cout << "Ahora el estado de salud del animal es de "<<this->getEstadoDeSalud()<< endl;
                 break;
 
             case 3:
@@ -321,9 +352,9 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                         throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
                     }
 
-                }while(hDormir <= 0);
+                }while(hDormir <= 0); //caso de manejo para que el animal duerma al menos 1 hora
                 this->setCantMaxDormir(hDormir);
-                cout << "Ahora las horas de sueno del animal es de"<<this->getCantMaxDormir() << endl;
+                cout << "Ahora las horas de suenio del animal son de "<<this->getCantMaxDormir() << endl;
                 break;
             case 4:
                 do {
@@ -352,7 +383,7 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                         throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
                     }
 
-                }while(cantJuguetes <= 0);
+                }while(cantJuguetes <= 0);//caso de excepcion para que añada al menos 1 juguete
 
                 cin.ignore();
                 while(cantJuguetes > 0){
@@ -363,12 +394,13 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                     this->juguetes.push_back(jugueteNom);
                     cantJuguetes--;
                 }
-                cout << "Se agrego corectamente los/el jueguete/s" << endl;
+                cout << "Se agrego corectamente el/los jueguete/s" << endl;
                 break;
             case 6:
                 cin.ignore();
+                //condicional para evitar que el animal se quede sin juguetes
                 if(juguetes.size() == 1){
-                    cout << "No puedes eliminar el unico juguete de " << nombre << endl;
+                    cout << "No puede eliminar el unico juguete de " << nombre << endl;
                 }
                 else {
                     do {
@@ -376,7 +408,7 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                         getline(cin, jugueteEliminar, '\n');
 
                         jugueteEliminar = convertidorStringMinuscula3(jugueteEliminar);
-                    } while (!eliminarJuguetes(jugueteEliminar));
+                    } while (!eliminarJuguetes(jugueteEliminar)); //caso de excepcion para no ingresar un juguete que no se puede eliminar
                     cout << "Se elimino correctamente el juguete" << jugueteEliminar << endl;
                 }
                 break;
@@ -385,13 +417,13 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                 if(alimentacion == "carnivoro"){
                     agregarAlimentoaMap(dietaCarnivora);
                 }
-                else if(alimentacion == "hervivoro"){
+                else if(alimentacion == "herbivoro"){
                     cin.ignore();
-                    agregarAlimentoaMap(dietaHervivora);
+                    agregarAlimentoaMap(dietaHerbivora);
                 }
                 else{
                     cin.ignore();
-                    agregarAlimentoaMapOmnivoro(dietaHervivora,dietaCarnivora);
+                    agregarAlimentoaMapOmnivoro(dietaHerbivora,dietaCarnivora);
                 }
                 cout << "Se agrego corectamente el alimento" << endl;
                 break;
@@ -401,8 +433,8 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                     cout << "Ingrese el alimento: " << endl;
                     getline(cin, alimentoEliminar, '\n');
                     alimentoEliminar = convertidorStringMinuscula3(alimentoEliminar);
-                }while(!eliminarAlimento(alimentoEliminar));
-                cout << "Se elimino correctamente el alimento"<<alimentoEliminar << endl;
+                }while(!eliminarAlimento(alimentoEliminar)); //caso de manejo para no ingresar un alimento que no se puede eliminar
+                cout << "Se elimino correctamente el alimento "<<alimentoEliminar << endl;
                 break;
             default:
                 break;
@@ -410,6 +442,8 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
     } while (opc != 0);
 }
 
+//Este metodo imprime los juguetes del animal y pide al usuario escoger uno para jugar
+// Imprime mensaje confirmando que el animal esta jugando con el juguete escogido
 void Animal::jugando(string nombre) {
     int opc;
     cout << "**Juguetes de " << nombre << endl;
@@ -433,6 +467,7 @@ void Animal::jugando(string nombre) {
 
 }
 
+//Busca un alimento en la dieta del animal
 bool Animal::existeAlim(string alimento) {
     unordered_map <string, int>::iterator itMapA;
     for (itMapA = this->alimentos.begin(); itMapA != this->alimentos.end(); ++itMapA) {
@@ -444,6 +479,9 @@ bool Animal::existeAlim(string alimento) {
     return false;
 }
 
+//Este metodo imprime los alimentos del animal, verifica que sea parte de su dieta
+// y pide al usuario escoger uno con la cantidad de kg de alimento, esta cantidad debe coincidir con la del mapa "alimentos"
+// Imprime mensaje confirmando que el animal esta comiendo el alimento escogido
 void Animal::comiendo(string nombre) {
     string alimento;
     int kg;
@@ -463,6 +501,10 @@ void Animal::comiendo(string nombre) {
     cout << nombre << " esta comiendo " << kg << "kg de " << alimento << endl;
 }
 
+//Pide al usuario la cantidad de horas que el animal va a dormir
+// teniendo en cuenta las horas que el animal ha dormido en el dia verifica si la cantidad ingresada
+// sobrepasa el limite de sueño
+// Imprime mensaje confirmando que el animal va a dormir la cantidad de horas ingresadas
 void Animal::durmiendo() {
     int hDormir;
     if (cantHorasDormidas < cantMaxDormir) {
@@ -480,13 +522,15 @@ void Animal::durmiendo() {
         } while (this->cantMaxDormir < hDormir + this->cantHorasDormidas);
         this->cantHorasDormidas += hDormir;
 
-        cout << nombre << " va a dormir durante" << hDormir << "horas" << endl;
+        cout << nombre << " va a dormir durante " << hDormir << " hora(s)" << endl;
     }
     else{
         cout << nombre <<" ya ha dormido suficiente el dia de hoy" << endl;
     }
 }
 
+//Menu para elegir una actividad para el animal: jugar, comer o dormir
+// verifica si el animal ya comio o jugo en dia de hoy
 void Animal::interactAnimal(string opc) {
     string nombre = this->getNombre();
     bool terminado = false;
@@ -546,9 +590,9 @@ void Animal::interactAnimal(string opc) {
 
 
 }
+
 //Esta funcion agrega ciertos alimentos por defecto segun el tipo de dieta
 //y le pide al usuario ingresar las cantidades
-
 void Animal::elegirAlim(string tipoAlim) {
     bool terminado = false;
     if (tipoAlim == "carnivoro") {
@@ -716,14 +760,8 @@ void Animal::elegirAlim(string tipoAlim) {
     }
 }
 
-unordered_map<string, int> Animal::getAlimentos() {
-    return this->alimentos;
-}
 
-void Animal::setAlimentos(unordered_map<string, int> alimentos) {
-    Animal::alimentos = alimentos;
-}
-
+//Metodo que imprime los alimentos de un animal con sus respectivas cantidades
 void Animal::mostrarMapAlimentacion() {
     unordered_map<string, int>::iterator itMapP;
     int contador = 1;
@@ -736,6 +774,7 @@ void Animal::mostrarMapAlimentacion() {
     }
 }
 
+//Metodo que imprime los juguetes de un animal
 void Animal::mostrarJuguetes() {
     vector<string>::iterator itVector;
     int contador = 1;

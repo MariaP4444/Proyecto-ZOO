@@ -45,6 +45,7 @@ void Zoo::setHerbivoro(vector<std::string> dietaHerbivora) {
     Zoo::dietaHerbivora = dietaHerbivora;
 }
 
+//Retorna un booleano que indica si el habitat ingresado ya existe
 bool Zoo::habitatRepetido(string nombre){
     vector<Habitat*>::iterator itVectorHa;
 

@@ -19,7 +19,7 @@ string convertidorStringMinuscula(string palabra){
 }
 
 // CUARTA OPCION
-
+//Metodo que pide los datos generales para interactuar con el animal o cambiar informacion del animal
 void cuartaOpcion(Zoo* pZoo, int opc){
 
     //Primero: pedir info del habitat del animal
@@ -48,6 +48,9 @@ void cuartaOpcion(Zoo* pZoo, int opc){
 
     tAnimal = tHabitat->devolverPunteroAn(idAnimal);
 
+    // opc nos dice si vamos a editar la informacion o a interactuar con el animal
+    // 4: editar informacion
+    // 5: interactuar con animal
     if(opc == 4) {
         bool terminado = false;
         do {
@@ -188,7 +191,8 @@ void mostrarMenu1(Zoo* pZoo){
     do{
         cout << "\n~~~~~~~~~~~~~~~~~~~~~ ZOO: "<< pZoo->getNombre()<< "~~~~~~~~~~~~~~~~~~~~~"<<"\n";
         cout << "1. Agregar habitat\n";
-        cout << "0. Salir\n" << endl;
+        cout << "0. Salir \n";
+        cout << "Escoge una opcion\n" << endl;
 
         cin >> opc;
         if(!cin.good()){
@@ -234,11 +238,12 @@ void mostrarMenu2(Zoo* pZoo) {
     {
         cout << "\n~~~~~~~~~~~~~~~~~~~~~ ZOO: "<< pZoo->getNombre()<< "~~~~~~~~~~~~~~~~~~~~~"<<"\n";
         cout << "1. Agregar habitat\n";
-        cout << "2. Agregar anima\n";
+        cout << "2. Agregar animal\n";
         cout << "3. Lista de habitats y animales\n";
         cout << "4. Modificar informacion de animal\n";
         cout << "5. Visitar habitat \n";
-        cout << "0. Salir\n" << endl;
+        cout << "0. Salir \n";
+        cout << "Escoge una opcion\n" << endl;
 
 
         cin >> opc;
@@ -333,7 +338,7 @@ int main() {
 // Creacion de la lista de alimentos pertenecientes a cada tipo de alimentacion
 
     vector<string> tCarnivoro;
-    vector<string> tHerviboro;
+    vector<string> tHerbivoro;
 
     tCarnivoro.push_back("vieiras");
     tCarnivoro.push_back("gambas");
@@ -345,23 +350,23 @@ int main() {
     tCarnivoro.push_back("res");
     tCarnivoro.push_back("pescado");
 
-    tHerviboro.push_back("semillas");
-    tHerviboro.push_back("raices");
-    tHerviboro.push_back("hojas");
-    tHerviboro.push_back("corteza");
-    tHerviboro.push_back("savia");
-    tHerviboro.push_back("flores");
-    tHerviboro.push_back("nectar");
-    tHerviboro.push_back("polen");
-    tHerviboro.push_back("frutas");
-    tHerviboro.push_back("verduras");
-    tHerviboro.push_back("granos");
+    tHerbivoro.push_back("semillas");
+    tHerbivoro.push_back("raices");
+    tHerbivoro.push_back("hojas");
+    tHerbivoro.push_back("corteza");
+    tHerbivoro.push_back("savia");
+    tHerbivoro.push_back("flores");
+    tHerbivoro.push_back("nectar");
+    tHerbivoro.push_back("polen");
+    tHerbivoro.push_back("frutas");
+    tHerbivoro.push_back("verduras");
+    tHerbivoro.push_back("granos");
 
     //Asignacion del nombre del zoologico
     pZoo->setNombre("MAVA");
 
     pZoo->setCarnivoro(tCarnivoro);
-    pZoo->setHerbivoro(tHerviboro);
+    pZoo->setHerbivoro(tHerbivoro);
 
     //Creacion de los 4 habitats basicos
     pZoo->registrarHabitat("polar", -60, 0);

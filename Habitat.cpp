@@ -6,6 +6,7 @@
 
 Habitat::Habitat(string nombre, int tempMax, int tempMin): nombre(nombre), tempMax(tempMax), tempMin(tempMin){}
 
+//Funcion que dado un string, retorna en la misma en minusculas, para evitar errores al comparar strings
 string convertidorStringMinuscula2(string palabra){
     for(char& c : palabra){
         c = std::tolower(c);
@@ -50,6 +51,7 @@ Animal* Habitat::devolverPunteroAn(int id){
     return nullptr;
 }
 
+//Metodo que imprime la informacion basica de los animales, se utiliza cuando se visita un habitat
 void Habitat::listarAnimales(){
 
     unordered_map <int, Animal*>::iterator itMapA;
@@ -63,6 +65,7 @@ void Habitat::listarAnimales(){
     }
 }
 
+//Imprime toda la informacion del los animales en un habitat
 void Habitat::infoCompletaAn(){
 
     unordered_map <int, Animal*>::iterator itMapA;

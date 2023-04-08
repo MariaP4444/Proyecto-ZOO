@@ -103,7 +103,7 @@ public:
 
     void setAliemtacion(string aliemtacion);
 
-    void menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervivora);
+    void menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHerbivora);
 
     void elegirAlim(string tipoAlim);
 
