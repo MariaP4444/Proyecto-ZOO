@@ -102,4 +102,6 @@ En los tres casos se envían mensajes confirmando o negando si se realizó la ac
 
 Pruebas del funcionamiento de [Proyecto Zoo](https://docs.google.com/document/d/1W198tO81pz3dJOqBWjtysm2cVstQITECEUdDgRzavBQ/edit?usp=sharing)
 
-[Diagrama de clases](https://javerianacaliedu-my.sharepoint.com/:u:/g/personal/vfgustin_javerianacali_edu_co/EQAyT3xCJ3BNoPLRaXTLLlABR6wN6kKZpJffcS8LYm14xQ?e=e9QAbu)
+Diagrama de clases:
+
+![Diagrama de clases](Diagrama sin título.drawio (1).png)
