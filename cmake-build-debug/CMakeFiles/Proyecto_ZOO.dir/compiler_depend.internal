@@ -3,12 +3,13 @@
 
 CMakeFiles/Proyecto_ZOO.dir/Animal.cpp.obj
  C:/Users/xsofi/OneDrive/Escritorio/Valeria/Proyecto-ZOO/Animal.cpp
- C:/Users/xsofi/OneDrive/Escritorio/Valeria/Proyecto-ZOO/Animal.h
- C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iostream
+ C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/pstl_config.h
+ C:/Users/xsofi/OneDrive/Escritorio/Valeria/Proyecto-ZOO/Animal.h
+ C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iostream
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ostream
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ios
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iosfwd
@@ -674,6 +675,7 @@ CMakeFiles/Proyecto_ZOO.dir/main.cpp.obj
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc
  C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/execution_defs.h
+ C:/Program Files/JetBrains/CLion 2023.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits
  C:/Users/xsofi/OneDrive/Escritorio/Valeria/Proyecto-ZOO/Habitat.h
  C:/Users/xsofi/OneDrive/Escritorio/Valeria/Proyecto-ZOO/Animal.h
  C:/Users/xsofi/OneDrive/Escritorio/Valeria/Proyecto-ZOO/Zoo.h

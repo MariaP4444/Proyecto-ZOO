@@ -122,26 +122,38 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
     cout << "Ingrese el nombre del animal: " << endl;
     getline(cin, nombreTemp, '\n');
 
+
     cout << "Ingrese la especie del animal: " << endl;
     getline(cin, especie, '\n');
+
 
     cout << "Ingrese el estado de salud del  animal: " << endl;
     getline(cin, estadoDeSalud, '\n');
 
+
     do {
         cout << "Ingrese la edad del animal:" << endl;
         cin >> edad;
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
     }while(edad <= 0 || edad > 100);
 
     do {
         cout << "Ingrese las horas de sueño del animal: " << endl;
         cin >> cantMaxDormir;
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
     }while(cantMaxDormir <= 0);
 
 
     do {
         cout << "Ingrese el numero de jugetes que va a tener el animal: " << endl;
         cin >> cantJuguetes;
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
     }while(cantJuguetes <= 0);
 
     cin.ignore();
@@ -159,6 +171,7 @@ void Habitat::agregarAnimal(int idAnimalNuevo, int tempMaxA, int tempMinA) {
         cout << "\n - Carnivoro \n - Herbivoro \n - Omnivoro" << endl;
         cout << "Ingrese el tipo de alimentacion del  animal: " << endl;
         getline(cin, alimentacion, '\n');
+
         alimentacion = convertidorStringMinuscula2(alimentacion);
     }while(!listaDietasDisponibles(alimentacion));
 

@@ -2,6 +2,7 @@
 // Created by Lenovo on 31/03/2023.
 //
 
+#include <limits>
 #include "Animal.h"
 
 Animal::Animal(string nombre, string especie, string estadoDeSalud, int id, int tempMaxA, int tempMinA,
@@ -128,6 +129,9 @@ int aseguradorDeCantAlimetos(){
     do{
         cout << "Por favor ingrese la cantidad de Kg que come el animal del alimento: " << endl;
         cin >> cantidadComidad;
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
     }while(cantidadComidad<= 0);
 
     return cantidadComidad;
@@ -150,9 +154,26 @@ void Animal::editarAlimento() {
             cout << "2.Guardar" << endl;
             cin >> opc;
 
+            if(!cin.good()){
+                throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+            }
+
         }
         if (opc == 1) {
-            itMapA->second = aseguradorDeCantAlimetos();
+            bool terminado = false;
+            do {
+                try {
+                    itMapA->second = aseguradorDeCantAlimetos();
+                    terminado = true;
+                }
+                catch (const invalid_argument error) {
+                    cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    terminado = false;
+                }
+            }
+            while(terminado == false);
 
         }
     }
@@ -178,7 +199,22 @@ void Animal::agregarAlimentoaMap(vector<string> dieta) {
                 cout << "Este alimento ya esta agregado a la dieta del animal " << endl;
             }
         }while(!buscarAlimentoenListaDieta(alimentoAgregar,dieta) && !this->alimentos.count(alimentoAgregar));
-        this->alimentos.insert(make_pair(alimentoAgregar,aseguradorDeCantAlimetos()));
+
+        bool terminado = false;
+        do {
+            try {
+                this->alimentos.insert(make_pair(alimentoAgregar,aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+
     }
     else{
         cout << " Al parecer el animal ya cuenta con la capacidad maxima de alimentos disponibles" << endl;
@@ -196,7 +232,22 @@ void Animal::agregarAlimentoaMapOmnivoro(vector<string> dieta1,vector<string> di
                 cout << "Este alimento ya esta agregado a la dieta del animal " << endl;
             }
         }while(!buscarAlimentoenListaDieta(alimentoAgregar,dieta1)&& !buscarAlimentoenListaDieta(alimentoAgregar,dieta2) && !this->alimentos.count(alimentoAgregar));
-        this->alimentos.insert(make_pair(alimentoAgregar,aseguradorDeCantAlimetos()));
+
+        bool terminado = false;
+        do {
+            try {
+                this->alimentos.insert(make_pair(alimentoAgregar,aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+
     }
     else{
         cout << " Al parecer el animal ya cuenta con la capacidad maxima de alimentos disponibles" << endl;
@@ -218,6 +269,7 @@ bool Animal::eliminarAlimento(string alimento) {
 void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervivora) {
     int opc, edad, hDormir,cantJuguetes;
     string salud,jugueteNom, jugueteEliminar, alimentoEliminar;
+    bool terminado = false;
     do {
         cout << "\n** Seleccine el dato a cambiar\n";
         cout << "1. Edad\n";
@@ -231,48 +283,82 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
         cout << "0. Guardar y salir"<< endl;
 
         cin >> opc;
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
 
         switch (opc) {
             case 1:
                 do {
                     cout << "Ingrese la nueva edad del animal: " << endl;
                     cin >> edad;
+
+                    if(!cin.good()){
+                        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+                    }
+
                 }while(edad < this->edad || edad > 100);
                 this->setEdad(edad);
                 cout << "Ahora la edad del animal es de"<<this->getEdad() << endl;
                 break;
+
             case 2:
                 cin.ignore();
                 cout << "Ingrese el estado actual de salud del animal: " << endl;
                 getline(cin, salud, '\n');
+
                 salud = convertidorStringMinuscula3(salud);
                 this->setEstadoDeSalud(salud);
                 cout << "Ahora el estado de salud  del animal es de"<<this->getEstadoDeSalud()<< endl;
                 break;
+
             case 3:
                 do {
                     cout << "Ingrese las nuevas horas de sueño del animal: " << endl;
                     cin >> hDormir;
+
+                    if(!cin.good()){
+                        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+                    }
+
                 }while(hDormir <= 0);
                 this->setCantMaxDormir(hDormir);
                 cout << "Ahora las horas de sueno del animal es de"<<this->getCantMaxDormir() << endl;
                 break;
             case 4:
-                editarAlimento();
-                cout << "Ya se edito con exito las porciones de alimentos" << endl;
+                do {
+                    try {
+                        editarAlimento();
+                        cout << "Ya se edito con exito las porciones de alimentos" << endl;
+                        terminado = true;
+                    }
+                    catch (const invalid_argument error) {
+                        cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                        terminado = false;
+                    }
+                }
+                while(terminado == false);
+                terminado = false;
                 break;
 
             case 5:
-
                 do {
                     cout << "Ingrese el numero de juguetes que va agregar a la lista del animal: " << endl;
                     cin >> cantJuguetes;
+
+                    if(!cin.good()){
+                        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+                    }
+
                 }while(cantJuguetes <= 0);
 
                 cin.ignore();
                 while(cantJuguetes > 0){
                     cout << " - Ingrese ingrese el nombre del juguete: " << endl;
                     getline(cin, jugueteNom, '\n');
+
                     jugueteNom= convertidorStringMinuscula3(jugueteNom);
                     this->juguetes.push_back(jugueteNom);
                     cantJuguetes--;
@@ -288,6 +374,7 @@ void Animal::menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHervi
                     do {
                         cout << "Ingrese el nombre: " << endl;
                         getline(cin, jugueteEliminar, '\n');
+
                         jugueteEliminar = convertidorStringMinuscula3(jugueteEliminar);
                     } while (!eliminarJuguetes(jugueteEliminar));
                     cout << "Se elimino correctamente el juguete" << jugueteEliminar << endl;
@@ -334,6 +421,11 @@ void Animal::jugando(string nombre) {
     do {
         cout << "Ingrese una opcion: " << endl;
         cin >> opc;
+
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
+
         opc -=1;
     }while(opc < 0 || opc > juguetes.size());
 
@@ -371,20 +463,58 @@ void Animal::comiendo(string nombre) {
     cout << nombre << " esta comiendo " << kg << "kg de " << alimento << endl;
 }
 
+void Animal::durmiendo() {
+    int hDormir;
+    if (cantHorasDormidas < cantMaxDormir) {
+        do {
+            cout << "Ingrese las horas de suenio: " << endl;
+            cin >> hDormir;
+
+            if(!cin.good()){
+                throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+            }
+
+            if (this->cantMaxDormir < hDormir + this->cantHorasDormidas) {
+                cout << "Esta cantidad se excede del limite de suenio del animal " << endl;
+            }
+        } while (this->cantMaxDormir < hDormir + this->cantHorasDormidas);
+        this->cantHorasDormidas += hDormir;
+
+        cout << nombre << " va a dormir durante" << hDormir << "horas" << endl;
+    }
+    else{
+        cout << nombre <<" ya ha dormido suficiente el dia de hoy" << endl;
+    }
+}
+
 void Animal::interactAnimal(string opc) {
     string nombre = this->getNombre();
-    int hDormir;
+    bool terminado = false;
 
     if(opc == "jugar") {
-        if(!jugar) {
-            jugando(nombre);
-            this->jugar = true;
+        do {
+            try {
+                if(!jugar) {
+                    jugando(nombre);
+                    this->jugar = true;
+                }
+                else{
+                    cout << nombre <<" ya ha jugado el dia de hoy" << endl;
+                }
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
         }
-        else{
-            cout << nombre <<" ya ha jugado el dia de hoy" << endl;
-        }
+        while(terminado == false);
+        terminado = false;
     }
     else if(opc == "comer") {
+
         if(!comer) {
             comiendo(nombre);
             this->comer = true;
@@ -395,19 +525,20 @@ void Animal::interactAnimal(string opc) {
 
     }
     else if(opc == "dormir") {
-        if (cantHorasDormidas < cantMaxDormir) {
-            do {
-                cout << "Ingrese las nuevas horas de sueño del animal: " << endl;
-                cin >> hDormir;
-                if (this->cantMaxDormir < hDormir + this->cantHorasDormidas) {
-                    cout << "Esta cantidad se excede del limite de suenio del animal " << endl;
-                }
-            } while (this->cantMaxDormir < hDormir + this->cantHorasDormidas);
-            this->cantHorasDormidas += hDormir;
+        do {
+            try {
+                durmiendo();
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
         }
-        else{
-            cout << nombre <<" ya ha dormido suficiente el dia de hoy" << endl;
-        }
+        while(terminado == false);
+        terminado = false;
     }
     else {
         throw invalid_argument("Esta no es una actividad posible");
@@ -417,34 +548,169 @@ void Animal::interactAnimal(string opc) {
 }
 
 void Animal::elegirAlim(string tipoAlim) {
+    bool terminado = false;
     if (tipoAlim == "carnivoro") {
 
         cout << "- Res" << endl;
-        this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+        terminado = false;
+
         cout << "- Pollo" << endl;
-        this->alimentos.insert(make_pair("pollo", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("pollo", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }while(terminado == false);
+        terminado = false;
+
         cout << "- Pescado" << endl;
-        this->alimentos.insert(make_pair("pescado", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("pescado", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }while(terminado == false);
+        terminado = false;
 
     } else if (tipoAlim == "herbivoro") {
 
         cout << "- Frutas" << endl;
-        this->alimentos.insert(make_pair("frutas", aseguradorDeCantAlimetos()));
+
+        do {
+            try {
+                this->alimentos.insert(make_pair("frutas", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }while(terminado == false);
+        terminado = false;
+
         cout << "- Verduras" << endl;
-        this->alimentos.insert(make_pair("Verduras", aseguradorDeCantAlimetos()));
+        bool terminado = false;
+        do {
+            try {
+                this->alimentos.insert(make_pair("verduras", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }while(terminado == false);
+        terminado = false;
+
         cout << "- Granos" << endl;
-        this->alimentos.insert(make_pair("granos", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("granos", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }while(terminado == false);
+        terminado = false;
 
     } else if (tipoAlim == "omnivoro") {
 
         cout << "- Res" << endl;
-        this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("res", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+        terminado = false;
+
         cout << "- Pollo" << endl;
-        this->alimentos.insert(make_pair("pollo", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("pollo", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+        terminado = false;
+
         cout << "- Frutas" << endl;
-        this->alimentos.insert(make_pair("frutas", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("frutas", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+        terminado = false;
+
         cout << "- Verduras" << endl;
-        this->alimentos.insert(make_pair("Verduras", aseguradorDeCantAlimetos()));
+        do {
+            try {
+                this->alimentos.insert(make_pair("verduras", aseguradorDeCantAlimetos()));
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
+        terminado = false;
     }
 }
 

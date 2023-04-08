@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <limits>
 
 #include "Habitat.h"
 #include "Zoo.h"
@@ -29,6 +30,7 @@ void cuartaOpcion(Zoo* pZoo, int opc){
     cout << "Ingrese el habitat del animal: " << endl;
     cin >> nombreHab;
 
+
     nombreHab = convertidorStringMinuscula(nombreHab);
 
     //busco el habitat para listar los animales de ese habitat
@@ -38,10 +40,28 @@ void cuartaOpcion(Zoo* pZoo, int opc){
     //una vez listados, le pido al usuario que escriba el id deseado para obtener el puntero
     cout << "Ingrese el id del animal " << endl;
     cin >> idAnimal;
+
+    if(!cin.good()){
+        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+    }
+
     tAnimal = tHabitat->devolverPunteroAn(idAnimal);
 
     if(opc == 4) {
-        tAnimal->menuAnimal(pZoo->getCarnivoro(), pZoo->getHerbivoro());
+        bool terminado = false;
+        do {
+            try {
+                tAnimal->menuAnimal(pZoo->getCarnivoro(), pZoo->getHerbivoro());
+                terminado = true;
+            }
+            catch (const invalid_argument error) {
+                cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                terminado = false;
+            }
+        }
+        while(terminado == false);
     }
     else{
         cout << "Ingrese la actividad a realizar " << endl;
@@ -72,8 +92,17 @@ void segundaOpcion(Zoo* pZoo){
 
     cout << "Ingrese la temperatura minima del animal " << endl;
     cin >> tempMinA;
+    //Estos throw se manejan en mostrarMenu2 opcion 2
+    if(!cin.good()){
+        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+    }
+
     cout << "Ingrese la temperatura maxima del animal  " << endl;
     cin >> tempMaxA;
+    if(!cin.good()){
+        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+    }
+
 
     if(!pZoo->exieteHabitatTemp(tempMaxA, tempMinA)) {
         throw invalid_argument("No hay ningun habitat disponible para este animal");
@@ -92,11 +121,25 @@ void segundaOpcion(Zoo* pZoo){
     do{
         cout << "Ingrese el nombre del habitat a cual desea ingresar al animal: " << endl;
         getline(cin, habitat, '\n');
+
         habitat = convertidorStringMinuscula(habitat);
     } while (!opcionHabitatDis(habitat,habitatsDisponibles));
 
     habitatTemp= pZoo->devolverPunteroVec(habitat);
-    habitatTemp->agregarAnimal(pZoo->getCantAnimales(),tempMaxA, tempMinA);
+    bool terminado = false;
+    do {
+        try {
+            habitatTemp->agregarAnimal(pZoo->getCantAnimales(),tempMaxA, tempMinA);
+            terminado = true;
+        }
+        catch (const invalid_argument error) {
+            cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            terminado = false;
+        }
+    }
+    while(terminado == false);
 
     pZoo->setCantAnimales(pZoo->getCantAnimales()+1);
 }
@@ -110,10 +153,19 @@ void primeraOpcion(Zoo* pZoo){
     cout << "Ingrese nombre del habitat " << endl;
     cin.ignore();
     getline(cin, nombre, '\n');
+
     cout << "Ingrese la temperatura minima del habitat " << endl;
     cin >> tMin;
+    //Estos throw se manejan en mostrarMenu2 y mostrarMenu1 opcion 1
+    if(!cin.good()){
+        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+    }
+
     cout << "Ingrese la temperatura maxima del habitat " << endl;
     cin >> tMax;
+    if(!cin.good()){
+        throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+    }
 
     for(char& c : nombre){
         c = std::tolower(c);
@@ -124,6 +176,7 @@ void primeraOpcion(Zoo* pZoo){
 }
 
 void mostrarMenu1(Zoo* pZoo){
+    bool terminado = false;
     int opc;
     do{
         cout << "\n~~~~~~~~~~~~~~~~~~~~~ ZOO: "<< pZoo->getNombre()<< "~~~~~~~~~~~~~~~~~~~~~"<<"\n";
@@ -131,11 +184,25 @@ void mostrarMenu1(Zoo* pZoo){
         cout << "0. Salir\n" << endl;
 
         cin >> opc;
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
         switch (opc)
         {
             case 1:
-                primeraOpcion(pZoo);
-                opc = -1;
+                do {
+                    try {
+                        primeraOpcion(pZoo);
+                        opc = -1;
+                        terminado = true;
+                    }
+                    catch (const invalid_argument error) {
+                        cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }while(terminado == false);
+                terminado = false;
                 break;
             case 0:
                 cout << "ADIOS" << endl;
@@ -150,7 +217,8 @@ void mostrarMenu1(Zoo* pZoo){
 }
 
 void mostrarMenu2(Zoo* pZoo) {
-    int id, opc, cantAnimales = 0;
+    int opc, cantAnimales = 0;
+    bool terminado = false;
 
     do
     {
@@ -165,28 +233,76 @@ void mostrarMenu2(Zoo* pZoo) {
 
         cin >> opc;
 
+        if(!cin.good()){
+            throw invalid_argument("se ingreso un argumento invalido y se espera un numero entero");
+        }
+
         switch (opc)
         {
             case 1:
-                primeraOpcion(pZoo);
-                id++;
+                do {
+                    try {
+                        primeraOpcion(pZoo);
+                        terminado = true;
+                    }
+                    catch (const invalid_argument error) {
+                        cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }while(terminado == false);
+                terminado = false;
                 break;
             case 2:
-                try{
-                    segundaOpcion(pZoo);
-                }
-                catch (invalid_argument e){
-                    cout << "Por favor crea un habitat para este animal y luego lo vuelves a intentar"<< endl;
-                }
+                do {
+                    try {
+                        try{
+                            segundaOpcion(pZoo);
+                        }
+                        catch (invalid_argument e){
+                            cout << "Por favor crea un habita2t para este animal y luego lo vuelves a intentar"<< endl;
+                        }
+                        terminado = true;
+                    }
+                    catch (const invalid_argument error) {
+                        cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }while(terminado == false);
+                terminado = false;
                 break;
             case 3:
                 pZoo->listarHabitatsConAnimales();
+
                 break;
             case 4:
-                cuartaOpcion(pZoo, opc);
+                do {
+                    try {
+                        cuartaOpcion(pZoo, opc);
+                        terminado = true;
+                    }
+                    catch (const invalid_argument error) {
+                        cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }while(terminado == false);
+                terminado = false;
                 break;
             case 5:
-                cuartaOpcion(pZoo, opc);
+                do {
+                    try {
+                        cuartaOpcion(pZoo, opc);
+                        terminado = true;
+                    }
+                    catch (const invalid_argument error) {
+                        cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }while(terminado == false);
+                terminado = false;
 
                 break;
             case 0:
@@ -203,7 +319,7 @@ int main() {
 
     vector<string> tCarnivoro;
     vector<string> tHerviboro;
-    Zoo* pZoo = new Zoo();
+    Zoo *pZoo = new Zoo();
 
     tCarnivoro.push_back("vieiras");
     tCarnivoro.push_back("gambas");
@@ -232,18 +348,32 @@ int main() {
     pZoo->setCarnivoro(tCarnivoro);
     pZoo->setHerbivoro(tHerviboro);
 
-    pZoo->registrarHabitat("polar",-60,0);
-    pZoo->registrarHabitat("selvatico",20,40);
-    pZoo->registrarHabitat("acuatico",1,19);
-    pZoo->registrarHabitat("desertico",40,60);
+    pZoo->registrarHabitat("polar", -60, 0);
+    pZoo->registrarHabitat("selvatico", 20, 40);
+    pZoo->registrarHabitat("acuatico", 1, 19);
+    pZoo->registrarHabitat("desertico", 40, 60);
 
-    if(pZoo->getZooNoVacio()){
-        mostrarMenu2(pZoo);
-    }
-    else{
-        mostrarMenu1(pZoo);
-        mostrarMenu2(pZoo);
-    }
+    bool terminado = false;
+    do {
+        try {
+
+            if (pZoo->getZooNoVacio()) {
+                mostrarMenu2(pZoo);
+            } else {
+                mostrarMenu1(pZoo);
+                mostrarMenu2(pZoo);
+            }
+            terminado = true;
+        }
+        catch (const invalid_argument error) {
+            cout << "\nSE PRESENTO UN ERROR: " << error.what() << endl;
+        //limpieza del buffer, estas funciones con estos parametros logran que al momento de manejar el error
+        //en el que se ingresa un string no se haga ningun bucle.
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }while(terminado == false);
+
     delete pZoo;
     return 0;
 

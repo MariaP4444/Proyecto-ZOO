@@ -103,6 +103,8 @@ public:
 
     void jugando(string nombre);
 
+    void durmiendo();
+
     bool existeAlim(string alimento);
 
     void mostrarMapAlimentacion();
