@@ -57,11 +57,7 @@ public:
 
     bool getComer();
 
-    void setComer(bool comer);
-
     bool getJugar();
-
-    void setJugar(bool jugar);
 
     int getCantMaxDormir();
 
@@ -69,23 +65,13 @@ public:
 
     int getCantHorasDormidas();
 
-    void setCantHorasDormidas(int cantHorasDormidas);
-
     int getTempMinA();
 
-    void setTempMinA(int tempMinA);
-
     int getTempMaxA();
-
-    void setTempMaxA(int tempMaxA);
 
     int getEdad();
 
     void setEdad(int edad);
-
-    int getId();
-
-    void setId(int id);
 
     string getEstadoDeSalud();
 
@@ -93,23 +79,13 @@ public:
 
     string getEspecie();
 
-    void setEspecie(string especie);
-
     string getNombre();
 
-    void setNombre(string nombre);
-
     string getAliemtacion();
-
-    void setAliemtacion(string aliemtacion);
 
     void menuAnimal(vector<string> dietaCarnivora, vector<string> dietaHerbivora);
 
     void elegirAlim(string tipoAlim);
-
-    unordered_map<string, int> getAlimentos();
-
-    void setAlimentos(unordered_map<string, int> alimentos);
 
     bool eliminarJuguetes(string jugueteElimanar);
 
@@ -128,7 +104,7 @@ public:
     void mostrarMapAlimentacion();
     void mostrarJuguetes();
 
-    void agregarAlimentoaMap(vector<string> listaAlimetos );
+    void agregarAlimentoaMap(vector<string> listaAlimetos);
     void agregarAlimentoaMapOmnivoro(vector<string> dieta1,vector<string> dieta2);
     bool eliminarAlimento(string alimento);
 };

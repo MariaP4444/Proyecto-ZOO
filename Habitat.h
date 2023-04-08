@@ -33,13 +33,10 @@ public:
     Habitat(string nombre, int tempMax, int tempMin);
 
     int getTempMin();
-    void setTempMin(int tempMin);
 
     string getNombre();
-    void setNombre(string nombre);
 
     int getTempMax();
-    void setTempMax(int tempMax);
 
     Animal* devolverPunteroAn(int id);
 

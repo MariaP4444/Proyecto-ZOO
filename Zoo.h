@@ -56,7 +56,6 @@ public:
     vector<string> listaHabitatsDisponibles(int temMax, int  temMin);
 
     Habitat* devolverPunteroVec(string nombre);
-
     void listarHabitatsConAnimales();
 
 

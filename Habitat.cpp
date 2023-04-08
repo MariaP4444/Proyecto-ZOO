@@ -18,24 +18,13 @@ string Habitat::getNombre(){
     return this->nombre;
 }
 
-void Habitat::setNombre(string nombre) {
-    Habitat::nombre = nombre;
-}
 
 int Habitat::getTempMax(){
     return this->tempMax;
 }
 
-void Habitat::setTempMax(int tempMax) {
-    Habitat::tempMax = tempMax;
-}
-
 int Habitat::getTempMin(){
     return this->tempMin;
-}
-
-void Habitat::setTempMin(int tempMin) {
-    Habitat::tempMin = tempMin;
 }
 
 
