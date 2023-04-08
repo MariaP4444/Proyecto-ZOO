@@ -104,4 +104,4 @@ Pruebas del funcionamiento de [Proyecto Zoo](https://docs.google.com/document/d/
 
 Diagrama de clases:
 
-![Diagrama de clases](Diagrama sin título.drawio (1).png)
+![Diagrama de clases](https://github.com/MariaP4444/Proyecto-ZOO/blob/99a598617da535237337fafd982c527adb7d3e56/Diagrama%20sin%20t%C3%ADtulo.drawio%20(1).png)
